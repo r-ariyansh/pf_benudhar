@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benudhar Behera · Lead Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background: #0A0A0F;
+            font-family: 'Inter', sans-serif;
+            color: #E8EDF5;
+            overflow-x: hidden;
+            /* Disable selection and inspect */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        /* Blazer-inspired color palette */
+        :root {
+            --blazer-navy: #0A1628;
+            --blazer-blue: #1A3A5C;
+            --blazer-accent: #2B5F8A;
+            --blazer-gold: #C9A84C;
+            --blazer-light: #D4E4F7;
+        }
+        .glass {
+            background: rgba(10, 22, 40, 0.7);
+            backdrop-filter: blur(16px) saturate(1.6);
+            -webkit-backdrop-filter: blur(16px) saturate(1.6);
+            border: 1px solid rgba(201, 168, 76, 0.08);
+        }
+        .glass-card {
+            background: rgba(26, 58, 92, 0.3);
+            backdrop-filter: blur(10px) saturate(1.3);
+            -webkit-backdrop-filter: blur(10px) saturate(1.3);
+            border: 1px solid rgba(201, 168, 76, 0.06);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .glass-card:hover {
+            border-color: rgba(201, 168, 76, 0.2);
+            box-shadow: 0 16px 48px -16px rgba(201, 168, 76, 0.06);
+            transform: translateY(-4px);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #D4E4F7, #C9A84C, #2B5F8A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-border {
+            position: relative;
+        }
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.15), rgba(43, 95, 138, 0.08));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #1A3A5C, #2B5F8A);
+            box-shadow: 0 4px 24px -6px rgba(26, 58, 92, 0.25);
+            transition: all 0.25s;
+            color: #D4E4F7;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 8px 40px -6px rgba(201, 168, 76, 0.3);
+            transform: scale(1.02);
+        }
+        .btn-contact {
+            background: linear-gradient(135deg, #1A3A5C, #C9A84C);
+            box-shadow: 0 4px 28px -6px rgba(201, 168, 76, 0.25);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            color: #D4E4F7;
+        }
+        .btn-contact::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.2), transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        .btn-contact:hover {
+            box-shadow: 0 8px 44px -6px rgba(201, 168, 76, 0.4);
+            transform: scale(1.03);
+        }
+        .bg-grid {
+            background-image: radial-gradient(rgba(201, 168, 76, 0.03) 1px, transparent 1px);
+            background-size: 48px 48px;
+        }
+        .section-label {
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #C9A84C;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .section-label::before {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 1.5px;
+            background: linear-gradient(90deg, #C9A84C, transparent);
+        }
+        .badge-tech {
+            background: rgba(201, 168, 76, 0.08);
+            border: 1px solid rgba(201, 168, 76, 0.06);
+            padding: 0.2rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            color: #D4E4F7;
+            transition: all 0.15s;
+        }
+        .badge-tech:hover {
+            background: rgba(201, 168, 76, 0.15);
+            border-color: rgba(201, 168, 76, 0.1);
+        }
+        .skill-chip {
+            background: rgba(26, 58, 92, 0.25);
+            border: 1px solid rgba(201, 168, 76, 0.04);
+            padding: 0.25rem 0.85rem;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            color: #D4E4F7;
+            transition: all 0.2s;
+        }
+        .skill-chip:hover {
+            background: rgba(201, 168, 76, 0.08);
+            border-color: rgba(201, 168, 76, 0.1);
+            color: #F1F5F9;
+        }
+        .project-tag {
+            background: rgba(201, 168, 76, 0.04);
+            border: 1px solid rgba(201, 168, 76, 0.04);
+            padding: 0.1rem 0.55rem;
+            border-radius: 100px;
+            font-size: 0.55rem;
+            color: #94A3B8;
+        }
+        .cert-badge {
+            background: rgba(26, 58, 92, 0.4);
+            border: 1px solid rgba(201, 168, 76, 0.08);
+            padding: 0.4rem 1.1rem;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            color: #D4E4F7;
+            transition: all 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .cert-badge:hover {
+            background: rgba(201, 168, 76, 0.1);
+            border-color: rgba(201, 168, 76, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(201, 168, 76, 0.08);
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #D4E4F7, #C9A84C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        @keyframes floatSoft {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+        .float-soft {
+            animation: floatSoft 6s ease-in-out infinite;
+        }
+        .nav-link {
+            position: relative;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #94A3B8;
+            transition: color 0.2s;
+            letter-spacing: 0.02em;
+        }
+        .nav-link:hover {
+            color: #C9A84C;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: linear-gradient(90deg, #C9A84C, #2B5F8A);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .glow-orb {
+            filter: blur(80px);
+            opacity: 0.15;
+        }
+        .profile-container {
+            aspect-ratio: 1/1;
+            width: 100%;
+            max-width: 340px;
+        }
+        .profile-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .logo-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .logo-img {
+            height: 40px;
+            width: auto;
+            max-width: 48px;
+            flex-shrink: 0;
+            object-fit: contain;
+            background: transparent;
+            filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
+        }
+        .logo-fallback {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #1A3A5C, #C9A84C);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #D4E4F7;
+            box-shadow: 0 4px 16px rgba(201, 168, 76, 0.2);
+            flex-shrink: 0;
+        }
+        @media (max-width: 768px) {
+            .profile-container {
+                max-width: 280px;
+            }
+            .logo-img {
+                height: 34px;
+                max-width: 40px;
+            }
+            .logo-fallback {
+                width: 34px;
+                height: 34px;
+                font-size: 0.75rem;
+            }
+        }
+        .gh-project-card {
+            background: rgba(10, 22, 40, 0.5);
+            border: 1px solid rgba(201, 168, 76, 0.04);
+            transition: all 0.25s ease;
+        }
+        .gh-project-card:hover {
+            border-color: rgba(201, 168, 76, 0.12);
+            transform: translateY(-2px);
+        }
+        .lang-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 4px;
+        }
+        .lead-badge {
+            background: rgba(201, 168, 76, 0.12);
+            border: 1px solid rgba(201, 168, 76, 0.12);
+        }
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        .form-success.show {
+            display: block;
+        }
+        .form-success .checkmark {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        .form-fields {
+            transition: opacity 0.3s ease;
+        }
+        .form-fields.hidden {
+            display: none;
+        }
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: transparent;
+        }
+        .logo-wrapper img {
+            background: transparent !important;
+            border: none !important;
+            outline: none !important;
+        }
+        /* Blazer-inspired accent colors */
+        .text-gold {
+            color: #C9A84C;
+        }
+        .border-gold {
+            border-color: rgba(201, 168, 76, 0.2);
+        }
+        .bg-gold-soft {
+            background: rgba(201, 168, 76, 0.05);
+        }
+        /* Disable inspect element - prevent right click and keyboard shortcuts */
+        .no-inspect {
+            -webkit-touch-callout: none;
+        }
+    </style>
+</head>
+<body class="bg-grid no-inspect" oncontextmenu="return false;" onkeydown="return disableInspect(event);">
+
+    <script>
+        // ===== DISABLE INSPECT =====
+        function disableInspect(e) {
+            // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+            if (e.key === 'F12' ||
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+                (e.ctrlKey && e.key === 'u') ||
+                (e.ctrlKey && e.shiftKey && e.key === 'C')) {
+                e.preventDefault();
+                return false;
+            }
+            return true;
+        }
+
+        // Disable right click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // Disable DevTools via keyboard
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' ||
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+                (e.ctrlKey && e.key === 'u') ||
+                (e.ctrlKey && e.shiftKey && e.key === 'C')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // ===== LOGO FALLBACK =====
+        function handleLogoError() {
+            document.getElementById('logoImg').style.display = 'none';
+            document.getElementById('logoFallback').style.display = 'flex';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const img = document.getElementById('logoImg');
+            img.style.background = 'transparent';
+            img.style.border = 'none';
+            img.style.outline = 'none';
+            if (img.complete && img.naturalWidth === 0) {
+                handleLogoError();
+            }
+            setTimeout(function() {
+                if (img.naturalWidth === 0) {
+                    handleLogoError();
+                }
+                img.style.background = 'transparent';
+                img.style.border = 'none';
+                img.style.outline = 'none';
+            }, 1000);
+        });
+    </script>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="fixed top-0 left-0 w-full z-50 px-6 md:px-12 py-3 glass border-b border-white/5">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#" class="logo-wrapper" id="logoLink">
+                <img src="logo.png" alt="Benudhar Behera Logo" class="logo-img" id="logoImg" onerror="handleLogoError()" style="background:transparent;" />
+                <div class="logo-fallback" id="logoFallback">BB</div>
+                <span class="logo-text text-white">Benudhar <span class="gradient-text">Behera</span></span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#work" class="nav-link">Work</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menuToggle" class="text-slate-300 hover:text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobileMenu" class="md:hidden hidden mt-3 space-y-3 pb-2 border-t border-white/5 pt-3">
+            <a href="#work" class="block text-slate-300 hover:text-white text-sm">Work</a>
+            <a href="#about" class="block text-slate-300 hover:text-white text-sm">About</a>
+            <a href="#experience" class="block text-slate-300 hover:text-white text-sm">Experience</a>
+            <a href="#skills" class="block text-slate-300 hover:text-white text-sm">Skills</a>
+            <a href="#projects" class="block text-slate-300 hover:text-white text-sm">Projects</a>
+            <a href="#contact" class="block text-slate-300 hover:text-white text-sm">Contact</a>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <header id="work" class="min-h-screen flex items-center px-6 md:px-16 lg:px-24 relative overflow-hidden pt-20">
+        <div class="absolute top-1/3 -left-20 w-96 h-96 bg-[#C9A84C]/10 rounded-full glow-orb -z-10"></div>
+        <div class="absolute bottom-1/4 right-0 w-80 h-80 bg-[#1A3A5C]/10 rounded-full glow-orb -z-10"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 w-64 h-64 bg-[#2B5F8A]/5 rounded-full glow-orb -z-10"></div>
+
+        <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-10 items-center py-6">
+            <div class="lg:col-span-7 space-y-6">
+                <div class="space-y-1">
+                    <span class="text-xs font-semibold tracking-[0.2em] text-gold uppercase">Backend · Cloud · AI</span>
+                    <h1 class="text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight">
+                        <span class="block text-white">Benudhar</span>
+                        <span class="block gradient-text">Behera</span>
+                    </h1>
+                    <div class="flex items-center gap-3 mt-2 flex-wrap">
+                        <p class="text-xl md:text-2xl text-slate-300 font-medium">Lead Backend Engineer</p>
+                        <span class="hidden sm:inline-block w-px h-6 bg-white/8"></span>
+                        <span class="inline-flex items-center gap-2 text-xs font-medium text-gold bg-[#C9A84C]/10 px-3 py-1.5 rounded-full border border-[#C9A84C]/10">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                            Lead Engineer
+                        </span>
+                        <span class="inline-flex items-center gap-1 text-xs text-slate-400 bg-white/5 px-3 py-1.5 rounded-full border border-white/5">
+                            <span class="font-bold text-white">9+</span> years
+                        </span>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="badge-tech">Java 8–21</span>
+                    <span class="badge-tech">Spring Boot</span>
+                    <span class="badge-tech">AWS</span>
+                    <span class="badge-tech">Kafka</span>
+                    <span class="badge-tech">Distributed Systems</span>
+                    <span class="badge-tech">GenAI</span>
+                </div>
+                <p class="text-lg text-slate-400 max-w-xl leading-relaxed">I architect and build resilient, cloud-native backend systems that power modern applications at scale.</p>
+                <div class="flex flex-wrap gap-4 pt-1">
+                    <a href="#" id="downloadResume" class="px-8 py-3.5 btn-primary rounded-xl font-medium text-white flex items-center gap-2 text-sm" target="_blank">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                        Download Resume
+                    </a>
+                    <a href="#contact" class="px-8 py-3.5 btn-contact rounded-xl font-medium text-white flex items-center gap-2 text-sm">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+            <div class="lg:col-span-5 flex justify-center lg:justify-end">
+                <div class="relative float-soft profile-container">
+                    <div class="w-full rounded-3xl overflow-hidden glass gradient-border border border-white/5 shadow-2xl shadow-[#C9A84C]/5">
+                        <img src="PassPhoto.png" alt="Benudhar Behera" class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></div>
+                        <div class="absolute top-4 left-4 text-[0.6rem] font-semibold text-gold bg-[#1A3A5C]/60 px-3.5 py-1.5 rounded-full backdrop-blur-sm border border-[#C9A84C]/20 flex items-center gap-1.5 lead-badge">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                            Lead Engineer
+                        </div>
+                        <div class="absolute bottom-4 right-4 text-[0.55rem] font-medium text-slate-300 bg-black/50 px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/5 flex items-center gap-1">
+                            <span class="font-bold text-white">9+</span> years
+                        </div>
+                        <div class="absolute bottom-4 left-4 text-[0.5rem] text-slate-400 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm border border-white/5">Bengaluru, IN</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="px-6 md:px-16 lg:px-24 py-16 max-w-7xl mx-auto">
+        <div class="glass rounded-3xl p-8 md:p-12 space-y-6 gradient-border">
+            <div class="section-label">About</div>
+            <div class="grid md:grid-cols-5 gap-8">
+                <div class="md:col-span-3 space-y-4 text-slate-300 text-base leading-relaxed">
+                    <p><span class="text-white font-semibold">9+ years</span> of backend engineering experience across Java (8–21), Spring Boot, microservices, distributed systems, event-driven architecture, and cloud-native platforms (AWS, Docker, Kubernetes).</p>
+                    <p>I design scalable enterprise systems with high throughput, low latency, and resilience — using Kafka, Redis, MongoDB, DynamoDB, PostgreSQL, and REST APIs. Recently working with <span class="text-gold font-medium">GenAI, RAG, OpenAI, and LLM applications</span> to build intelligent retrieval and conversational platforms.</p>
+                    <p>Passionate about performance optimization, clean architecture, and mentoring teams to deliver production-ready solutions.</p>
+                </div>
+                <div class="md:col-span-2 grid grid-cols-2 gap-4">
+                    <div class="glass-card p-5 rounded-2xl text-center">
+                        <div class="stat-number">9+</div>
+                        <p class="text-xs text-slate-400 mt-1">Years Experience</p>
+                    </div>
+                    <div class="glass-card p-5 rounded-2xl text-center">
+                        <div class="stat-number">50+</div>
+                        <p class="text-xs text-slate-400 mt-1">APIs Delivered</p>
+                    </div>
+                    <div class="glass-card p-5 rounded-2xl text-center">
+                        <div class="stat-number">15+</div>
+                        <p class="text-xs text-slate-400 mt-1">Cloud Projects</p>
+                    </div>
+                    <div class="glass-card p-5 rounded-2xl text-center">
+                        <div class="stat-number">100%</div>
+                        <p class="text-xs text-slate-400 mt-1">Passion</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <section id="experience" class="px-6 md:px-16 lg:px-24 py-16 max-w-5xl mx-auto">
+        <div class="section-label mb-8">Experience</div>
+        <div class="space-y-10 relative before:absolute before:left-[19px] before:top-0 before:h-full before:w-[1.5px] before:bg-gradient-to-b before:from-[#C9A84C]/30 before:to-[#1A3A5C]/20 before:rounded-full">
+            <div class="relative pl-14">
+                <div class="absolute left-0 top-1.5 w-10 h-10 rounded-full bg-[#C9A84C]/10 border border-[#C9A84C]/15 flex items-center justify-center text-gold text-sm">◆</div>
+                <div class="glass-card rounded-2xl p-7 md:p-9 space-y-2">
+                    <div class="flex flex-wrap justify-between items-start gap-2">
+                        <h3 class="text-xl font-bold text-white">Lead Backend Engineer</h3>
+                        <span class="text-xs font-medium text-gold bg-[#C9A84C]/10 px-3 py-1 rounded-full border border-[#C9A84C]/10">2024 – Present</span>
+                    </div>
+                    <p class="text-[#D4E4F7]/70 text-sm font-medium">Ernst & Young (EY) · Bangalore</p>
+                    <ul class="list-disc list-inside text-slate-300 text-sm space-y-1.5 mt-3 marker:text-gold">
+                        <li>Architected GenAI platform with RAG & vector search, supporting 70+ req/min with low latency.</li>
+                        <li>Built cloud-native microservices (Java 21, Spring Boot, Kafka) following Hexagonal Architecture.</li>
+                        <li>Reduced API latency by ~40% via caching, JVM tuning, async processing.</li>
+                        <li>Centralized auth (OAuth2, Keycloak, RBAC) for distributed services.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="relative pl-14">
+                <div class="absolute left-0 top-1.5 w-10 h-10 rounded-full bg-[#C9A84C]/10 border border-[#C9A84C]/15 flex items-center justify-center text-gold text-sm">◆</div>
+                <div class="glass-card rounded-2xl p-7 md:p-9 space-y-2">
+                    <div class="flex flex-wrap justify-between items-start gap-2">
+                        <h3 class="text-xl font-bold text-white">Senior Backend Engineer</h3>
+                        <span class="text-xs font-medium text-gold bg-[#C9A84C]/10 px-3 py-1 rounded-full border border-[#C9A84C]/10">2021 – 2024</span>
+                    </div>
+                    <p class="text-[#D4E4F7]/70 text-sm font-medium">Wipro Limited · Bangalore</p>
+                    <ul class="list-disc list-inside text-slate-300 text-sm space-y-1.5 mt-3 marker:text-gold">
+                        <li>Designed microservices with Java, Spring Boot, Kafka for enterprise platform.</li>
+                        <li>Improved API response time by 30% via query optimization & caching.</li>
+                        <li>Optimized database indexing & SQL for high-volume transaction throughput.</li>
+                        <li>Built robust test suites (JUnit 5, Mockito) reducing production defects.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="relative pl-14">
+                <div class="absolute left-0 top-1.5 w-10 h-10 rounded-full bg-[#C9A84C]/10 border border-[#C9A84C]/15 flex items-center justify-center text-gold text-sm">◆</div>
+                <div class="glass-card rounded-2xl p-7 md:p-9 space-y-2">
+                    <div class="flex flex-wrap justify-between items-start gap-2">
+                        <h3 class="text-xl font-bold text-white">Backend Engineer</h3>
+                        <span class="text-xs font-medium text-gold bg-[#C9A84C]/10 px-3 py-1 rounded-full border border-[#C9A84C]/10">2020 – 2021</span>
+                    </div>
+                    <p class="text-[#D4E4F7]/70 text-sm font-medium">ITC InfoTech · Bangalore</p>
+                    <ul class="list-disc list-inside text-slate-300 text-sm space-y-1.5 mt-3 marker:text-gold">
+                        <li>Built cloud-native services for e-commerce (order, payment, inventory).</li>
+                        <li>Event-driven architecture with Kafka for async processing.</li>
+                        <li>Designed idempotent APIs & resilient payment workflows.</li>
+                        <li>Improved code quality with SOLID, clean architecture & design patterns.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="relative pl-14">
+                <div class="absolute left-0 top-1.5 w-10 h-10 rounded-full bg-[#C9A84C]/10 border border-[#C9A84C]/15 flex items-center justify-center text-gold text-sm">◆</div>
+                <div class="glass-card rounded-2xl p-7 md:p-9 space-y-2">
+                    <div class="flex flex-wrap justify-between items-start gap-2">
+                        <h3 class="text-xl font-bold text-white">Software Engineer</h3>
+                        <span class="text-xs font-medium text-gold bg-[#C9A84C]/10 px-3 py-1 rounded-full border border-[#C9A84C]/10">2017 – 2020</span>
+                    </div>
+                    <p class="text-[#D4E4F7]/70 text-sm font-medium">Silicon Tech Lab · Bhubaneswar</p>
+                    <ul class="list-disc list-inside text-slate-300 text-sm space-y-1.5 mt-3 marker:text-gold">
+                        <li>Developed ERP backend modules with Spring MVC, Hibernate, PostgreSQL.</li>
+                        <li>Implemented reusable business components for core ERP functionalities.</li>
+                        <li>Resolved production issues via root cause analysis & performance tuning.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills" class="px-6 md:px-16 lg:px-24 py-16 max-w-7xl mx-auto">
+        <div class="section-label mb-8">Skills</div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div class="glass-card rounded-2xl p-6 space-y-3">
+                <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">Backend</h4>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="skill-chip">Java</span><span class="skill-chip">Spring Boot</span><span class="skill-chip">Spring Cloud</span>
+                    <span class="skill-chip">WebFlux</span><span class="skill-chip">Hibernate</span><span class="skill-chip">JPA</span>
+                </div>
+            </div>
+            <div class="glass-card rounded-2xl p-6 space-y-3">
+                <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">Cloud &amp; DevOps</h4>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="skill-chip">AWS (Lambda, EC2, EKS, S3)</span>
+                    <span class="skill-chip">DynamoDB</span><span class="skill-chip">CloudWatch</span>
+                    <span class="skill-chip">IAM</span><span class="skill-chip">Docker</span>
+                    <span class="skill-chip">Kubernetes</span><span class="skill-chip">Terraform</span>
+                </div>
+            </div>
+            <div class="glass-card rounded-2xl p-6 space-y-3">
+                <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">Databases</h4>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="skill-chip">MongoDB</span><span class="skill-chip">PostgreSQL</span>
+                    <span class="skill-chip">Redis</span><span class="skill-chip">MySQL</span>
+                    <span class="skill-chip">DynamoDB</span>
+                </div>
+            </div>
+            <div class="glass-card rounded-2xl p-6 space-y-3">
+                <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">Messaging</h4>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="skill-chip">Kafka</span><span class="skill-chip">RabbitMQ</span>
+                    <span class="skill-chip">SNS</span><span class="skill-chip">SQS</span>
+                </div>
+            </div>
+            <div class="glass-card rounded-2xl p-6 space-y-3">
+                <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">AI &amp; GenAI</h4>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="skill-chip">OpenAI</span><span class="skill-chip">RAG</span>
+                    <span class="skill-chip">LangChain</span><span class="skill-chip">Vector DB</span>
+                    <span class="skill-chip">Prompt Engineering</span>
+                </div>
+            </div>
+            <div class="glass-card rounded-2xl p-6 space-y-3">
+                <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">Observability</h4>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="skill-chip">Prometheus</span><span class="skill-chip">Grafana</span>
+                    <span class="skill-chip">ELK</span><span class="skill-chip">Splunk</span>
+                    <span class="skill-chip">CloudWatch</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" class="px-6 md:px-16 lg:px-24 py-16 max-w-7xl mx-auto">
+        <div class="flex items-center justify-between mb-8">
+            <div class="section-label">Projects</div>
+            <a href="https://github.com/benudhar03" target="_blank" rel="noopener noreferrer" class="text-xs text-gold hover:text-[#D4E4F7] transition flex items-center gap-1">
+                View all repositories →
+            </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="gh-project-card rounded-xl p-5 space-y-2">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                            <span class="text-sm font-medium text-white">scheduling-service</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-1">Scalable scheduling service with cron-based job execution</p>
+                    </div>
+                    <span class="text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded-full">Public</span>
+                </div>
+                <div class="flex items-center gap-4 text-xs text-slate-400">
+                    <span class="flex items-center gap-1">
+                        <span class="lang-dot" style="background:#b07219;"></span> Java
+                    </span>
+                    <span>⭐ 9</span>
+                    <span>🔄 3</span>
+                </div>
+            </div>
+            <div class="gh-project-card rounded-xl p-5 space-y-2">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                            <span class="text-sm font-medium text-white">smart-document-hub</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-1">Intelligent document processing, storage, search & analytics</p>
+                    </div>
+                    <span class="text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded-full">Public</span>
+                </div>
+                <div class="flex items-center gap-4 text-xs text-slate-400">
+                    <span class="flex items-center gap-1">
+                        <span class="lang-dot" style="background:#b07219;"></span> Java
+                    </span>
+                    <span>⭐ 7</span>
+                    <span>🔄 2</span>
+                </div>
+            </div>
+            <div class="gh-project-card rounded-xl p-5 space-y-2">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                            <span class="text-sm font-medium text-white">contextflow-ai-copilot</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-1">Reactive multi-domain AI platform with Spring WebFlux & Spring AI</p>
+                    </div>
+                    <span class="text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded-full">Public</span>
+                </div>
+                <div class="flex items-center gap-4 text-xs text-slate-400">
+                    <span class="flex items-center gap-1">
+                        <span class="lang-dot" style="background:#b07219;"></span> Java
+                    </span>
+                    <span>⭐ 12</span>
+                    <span>🔄 4</span>
+                </div>
+            </div>
+            <div class="gh-project-card rounded-xl p-5 space-y-2">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                            <span class="text-sm font-medium text-white">ar-order-service</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-1">Event-driven order service using Kafka, MongoDB & outbox pattern</p>
+                    </div>
+                    <span class="text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded-full">Public</span>
+                </div>
+                <div class="flex items-center gap-4 text-xs text-slate-400">
+                    <span class="flex items-center gap-1">
+                        <span class="lang-dot" style="background:#b07219;"></span> Java
+                    </span>
+                    <span>⭐ 6</span>
+                    <span>🔄 1</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CERTIFICATIONS ===== -->
+    <section class="px-6 md:px-16 lg:px-24 py-16 max-w-7xl mx-auto">
+        <div class="section-label mb-8">Certifications</div>
+        <div class="flex flex-wrap gap-3">
+            <a href="https://www.ey.com/en_gl" target="_blank" rel="noopener noreferrer" class="cert-badge">EY IT Architecture (Bronze, 2025)</a>
+            <a href="https://www.ey.com/en_gl" target="_blank" rel="noopener noreferrer" class="cert-badge">EY Applied AI (Bronze, 2024)</a>
+            <a href="https://cloud.google.com/learn/training" target="_blank" rel="noopener noreferrer" class="cert-badge">Google Cloud - GenAI</a>
+            <a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener noreferrer" class="cert-badge">AWS Certified Solutions Architect</a>
+            <a href="https://education.oracle.com/java" target="_blank" rel="noopener noreferrer" class="cert-badge">Oracle Certified Professional Java</a>
+            <a href="https://spring.io/professional" target="_blank" rel="noopener noreferrer" class="cert-badge">Spring Professional</a>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="px-6 md:px-16 lg:px-24 py-16 max-w-5xl mx-auto">
+        <div class="glass rounded-3xl p-8 md:p-12 space-y-8 gradient-border">
+            <div class="section-label">Contact</div>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="space-y-4">
+                    <div>
+                        <span class="text-gold font-medium block text-xs uppercase tracking-wider">Email</span>
+                        <a href="mailto:benudharbehera003@gmail.com" class="text-slate-300 hover:text-gold transition">benudharbehera003@gmail.com</a>
+                    </div>
+                    <div>
+                        <span class="text-gold font-medium block text-xs uppercase tracking-wider">LinkedIn</span>
+                        <a href="https://www.linkedin.com/in/benudhar-behera03/" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-gold transition">linkedin.com/in/benudhar</a>
+                    </div>
+                    <div>
+                        <span class="text-gold font-medium block text-xs uppercase tracking-wider">GitHub</span>
+                        <a href="https://github.com/benudhar03" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-gold transition">github.com/benudhar</a>
+                    </div>
+                    <a href="#" id="downloadResume2" class="inline-block mt-2 px-6 py-3 bg-[#1A3A5C]/30 hover:bg-[#1A3A5C]/50 rounded-xl transition border border-[#C9A84C]/20 text-sm text-gold hover:text-white">📄 Download Resume</a>
+                </div>
+                <div id="contactFormWrapper">
+                    <form id="contactForm" class="space-y-4 form-fields">
+                        <input type="text" id="formName" placeholder="Your Name" required class="w-full bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C9A84C]/30 transition text-sm" />
+                        <input type="email" id="formEmail" placeholder="Your Email" required class="w-full bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C9A84C]/30 transition text-sm" />
+                        <textarea id="formMessage" rows="3" placeholder="Message" required class="w-full bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C9A84C]/30 transition text-sm resize-none"></textarea>
+                        <button type="submit" class="w-full py-3.5 btn-contact rounded-xl font-medium text-white transition-all">Send Message</button>
+                    </form>
+                    <div id="formSuccess" class="form-success">
+                        <div class="checkmark">✅</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Thank You!</h3>
+                        <p class="text-slate-300">Your message has been sent successfully. I'll get back to you soon.</p>
+                        <button onclick="resetForm()" class="mt-4 px-6 py-2 btn-primary rounded-xl text-white text-sm">Send another message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="text-center text-slate-500 text-xs py-6 border-t border-white/5 max-w-7xl mx-auto px-6">
+        <div class="flex justify-center gap-6 mb-3">
+            <a href="https://www.linkedin.com/in/benudhar-behera03/" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition">LinkedIn</a>
+            <a href="https://github.com/benudhar03" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition">GitHub</a>
+            <a href="mailto:benudharbehera003@gmail.com" class="hover:text-gold transition">Email</a>
+        </div>
+        <p class="text-slate-500/70 tracking-wide">© 2025 <span class="text-gold">Benudhar Behera</span> — Crafted with precision for modern engineering</p>
+    </footer>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <a href="#" class="fixed bottom-8 right-8 glass w-10 h-10 rounded-full flex items-center justify-center text-sm backdrop-blur-xl border border-white/10 hover:border-[#C9A84C]/30 transition-all hover:scale-105 text-gold hover:text-white">↑</a>
+
+    <script>
+        // ===== MOBILE MENU =====
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+
+        // ===== RESUME DOWNLOAD =====
+        function downloadResume() {
+            const resumePath = 'Benudhar Behera.pdf';
+            window.open(resumePath, '_blank');
+        }
+
+        document.getElementById('downloadResume').addEventListener('click', function(e) {
+            e.preventDefault();
+            downloadResume();
+        });
+        document.getElementById('downloadResume2').addEventListener('click', function(e) {
+            e.preventDefault();
+            downloadResume();
+        });
+
+        // ===== CONTACT FORM =====
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('formName').value.trim();
+            const email = document.getElementById('formEmail').value.trim();
+            const message = document.getElementById('formMessage').value.trim();
+
+            if (!name || !email || !message) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            if (!email.includes('@') || !email.includes('.')) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            document.querySelector('.form-fields').classList.add('hidden');
+            document.getElementById('formSuccess').classList.add('show');
+
+            console.log('Message from:', name, email, message);
+        });
+
+        function resetForm() {
+            document.getElementById('formName').value = '';
+            document.getElementById('formEmail').value = '';
+            document.getElementById('formMessage').value = '';
+            document.getElementById('formSuccess').classList.remove('show');
+            document.querySelector('.form-fields').classList.remove('hidden');
+        }
+        window.resetForm = resetForm;
+    </script>
+</body>
+</html>
