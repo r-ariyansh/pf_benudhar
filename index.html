@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Benudhar Behera · Lead Engineer</title>
     
-    <!-- ✅ BB Favicon - shows in browser tab -->
+    <!-- ✅ BB Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231A3A5C'/><text x='50' y='68' font-size='50' font-weight='bold' text-anchor='middle' fill='%23C9A84C'>BB</text></svg>">
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,14 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             background: #0A0A0F;
             font-family: 'Inter', sans-serif;
@@ -159,14 +153,6 @@
             border-color: rgba(201, 168, 76, 0.1);
             color: #F1F5F9;
         }
-        .project-tag {
-            background: rgba(201, 168, 76, 0.04);
-            border: 1px solid rgba(201, 168, 76, 0.04);
-            padding: 0.1rem 0.55rem;
-            border-radius: 100px;
-            font-size: 0.55rem;
-            color: #94A3B8;
-        }
         .cert-badge {
             background: rgba(26, 58, 92, 0.4);
             border: 1px solid rgba(201, 168, 76, 0.08);
@@ -194,17 +180,10 @@
             background-clip: text;
         }
         @keyframes floatSoft {
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-6px);
-            }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
         }
-        .float-soft {
-            animation: floatSoft 6s ease-in-out infinite;
-        }
+        .float-soft { animation: floatSoft 6s ease-in-out infinite; }
         .nav-link {
             position: relative;
             font-size: 0.75rem;
@@ -213,9 +192,7 @@
             transition: color 0.2s;
             letter-spacing: 0.02em;
         }
-        .nav-link:hover {
-            color: #C9A84C;
-        }
+        .nav-link:hover { color: #C9A84C; }
         .nav-link::after {
             content: '';
             position: absolute;
@@ -226,64 +203,22 @@
             background: linear-gradient(90deg, #C9A84C, #2B5F8A);
             transition: width 0.3s ease;
         }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        .glow-orb {
-            filter: blur(80px);
-            opacity: 0.15;
-        }
-        .profile-container {
-            aspect-ratio: 1/1;
-            width: 100%;
-            max-width: 340px;
-        }
-        .profile-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .logo-text {
-            font-size: 1.1rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-        .logo-img {
-            height: 40px;
-            width: auto;
-            max-width: 48px;
-            flex-shrink: 0;
-            object-fit: contain;
-            background: transparent;
-            filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
-        }
+        .nav-link:hover::after { width: 100%; }
+        .glow-orb { filter: blur(80px); opacity: 0.15; }
+        .profile-container { aspect-ratio: 1/1; width: 100%; max-width: 340px; }
+        .profile-container img { width: 100%; height: 100%; object-fit: cover; }
+        .logo-text { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; }
         .logo-fallback {
-            width: 42px;
-            height: 42px;
-            border-radius: 12px;
+            width: 42px; height: 42px; border-radius: 12px;
             background: linear-gradient(135deg, #1A3A5C, #C9A84C);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1rem;
-            color: #D4E4F7;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 1rem; color: #D4E4F7;
             box-shadow: 0 4px 16px rgba(201, 168, 76, 0.2);
             flex-shrink: 0;
         }
         @media (max-width: 768px) {
-            .profile-container {
-                max-width: 280px;
-            }
-            .logo-img {
-                height: 34px;
-                max-width: 40px;
-            }
-            .logo-fallback {
-                width: 34px;
-                height: 34px;
-                font-size: 0.75rem;
-            }
+            .profile-container { max-width: 280px; }
+            .logo-fallback { width: 34px; height: 34px; font-size: 0.75rem; }
         }
         .gh-project-card {
             background: rgba(10, 22, 40, 0.5);
@@ -294,17 +229,107 @@
             border-color: rgba(201, 168, 76, 0.12);
             transform: translateY(-2px);
         }
-        .lang-dot {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
+        .lang-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; }
+        .text-gold { color: #C9A84C; }
+        .border-gold { border-color: rgba(201, 168, 76, 0.2); }
+        .bg-gold-soft { background: rgba(201, 168, 76, 0.05); }
+        .no-inspect { -webkit-touch-callout: none; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+        .animate-bounce-slow { animation: bounce 2.5s ease-in-out infinite; }
+
+        /* --- Enhanced Experience Cards --- */
+        .exp-card {
+            background: rgba(10, 22, 40, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(201, 168, 76, 0.06);
+            transition: all 0.3s ease;
+        }
+        .exp-card:hover {
+            border-color: rgba(201, 168, 76, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px -12px rgba(201, 168, 76, 0.08);
+        }
+        .exp-card .exp-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        .exp-card .exp-company {
+            font-size: 0.8rem;
+            color: #94A3B8;
+            letter-spacing: 0.02em;
+        }
+        .exp-card .exp-tag {
+            font-size: 0.55rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            background: rgba(201, 168, 76, 0.08);
+            border: 1px solid rgba(201, 168, 76, 0.06);
+            padding: 0.2rem 0.7rem;
+            border-radius: 100px;
+            color: #C9A84C;
+        }
+        .exp-card .exp-desc {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.4rem;
+            margin-top: 0.5rem;
+        }
+        .exp-card .exp-desc li {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #CBD5E1;
+            line-height: 1.5;
+        }
+        .exp-card .exp-desc li::before {
+            content: "▹";
+            color: #C9A84C;
+            font-size: 0.7rem;
+            opacity: 0.7;
+        }
+        .exp-card .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(201, 168, 76, 0.06);
+        }
+        .exp-card .tech-stack span {
+            background: rgba(26, 58, 92, 0.3);
+            border: 1px solid rgba(201, 168, 76, 0.04);
+            padding: 0.15rem 0.6rem;
+            border-radius: 100px;
+            font-size: 0.6rem;
+            color: #94A3B8;
+            letter-spacing: 0.01em;
+        }
+        .exp-card .tech-stack span:hover {
+            background: rgba(201, 168, 76, 0.08);
+            color: #D4E4F7;
+        }
+        .timeline-dot {
+            width: 12px; height: 12px;
+            background: #C9A84C;
             border-radius: 50%;
-            margin-right: 4px;
+            box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.15);
+            flex-shrink: 0;
         }
-        .lead-badge {
-            background: rgba(201, 168, 76, 0.12);
-            border: 1px solid rgba(201, 168, 76, 0.12);
+        .timeline-line {
+            width: 2px;
+            background: linear-gradient(to bottom, rgba(201, 168, 76, 0.2), transparent);
+            flex-shrink: 0;
         }
+        @media (max-width: 640px) {
+            .exp-card .exp-header { flex-direction: column; }
+        }
+
+        /* Contact form success state */
         .form-success {
             display: none;
             text-align: center;
@@ -323,161 +348,182 @@
         .form-fields.hidden {
             display: none;
         }
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: transparent;
-            text-decoration: none;
+        /* Fix for placeholder text in contact form */
+        .contact-input::placeholder {
+            color: #64748b;
+            opacity: 1;
         }
-        .logo-wrapper img {
-            background: transparent !important;
-            border: none !important;
-            outline: none !important;
-        }
-        .text-gold {
-            color: #C9A84C;
-        }
-        .border-gold {
-            border-color: rgba(201, 168, 76, 0.2);
-        }
-        .bg-gold-soft {
-            background: rgba(201, 168, 76, 0.05);
-        }
-        .no-inspect {
-            -webkit-touch-callout: none;
+        .contact-input:focus::placeholder {
+            color: #94a3b8;
         }
     </style>
 </head>
 <body class="bg-grid no-inspect" oncontextmenu="return false;" onkeydown="return disableInspect(event);">
 
-    <script>
-        function disableInspect(e) {
-            if (e.key === 'F12' ||
-                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
-                (e.ctrlKey && e.key === 'u') ||
-                (e.ctrlKey && e.shiftKey && e.key === 'C')) {
-                e.preventDefault();
-                return false;
-            }
-            return true;
-        }
-
-        document.addEventListener('contextmenu', function(e) {
+<script>
+    function disableInspect(e) {
+        if (e.key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+            (e.ctrlKey && e.key === 'u') ||
+            (e.ctrlKey && e.shiftKey && e.key === 'C')) {
             e.preventDefault();
             return false;
-        });
+        }
+        return true;
+    }
+    document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+            (e.ctrlKey && e.key === 'u') ||
+            (e.ctrlKey && e.shiftKey && e.key === 'C')) {
+            e.preventDefault();
+            return false;
+        }
+    });
+</script>
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'F12' ||
-                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
-                (e.ctrlKey && e.key === 'u') ||
-                (e.ctrlKey && e.shiftKey && e.key === 'C')) {
-                e.preventDefault();
-                return false;
-            }
-        });
-    </script>
+<!-- ===== NAVIGATION ===== -->
+<nav class="fixed top-0 left-0 w-full z-50 px-6 md:px-12 py-3 glass border-b border-white/5">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <a href="#" class="flex items-center gap-3" id="logoLink">
+            <div class="logo-fallback">BB</div>
+            <span class="logo-text text-white">Benudhar <span class="gradient-text">Behera</span></span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+            <a href="#work" class="nav-link">Work</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#experience" class="nav-link">Experience</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="md:hidden">
+            <button id="menuToggle" class="text-slate-300 hover:text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden mt-3 space-y-3 pb-2 border-t border-white/5 pt-3">
+        <a href="#work" class="block text-slate-300 hover:text-white text-sm">Work</a>
+        <a href="#about" class="block text-slate-300 hover:text-white text-sm">About</a>
+        <a href="#experience" class="block text-slate-300 hover:text-white text-sm">Experience</a>
+        <a href="#skills" class="block text-slate-300 hover:text-white text-sm">Skills</a>
+        <a href="#projects" class="block text-slate-300 hover:text-white text-sm">Projects</a>
+        <a href="#contact" class="block text-slate-300 hover:text-white text-sm">Contact</a>
+    </div>
+</nav>
 
-    <!-- ===== NAVIGATION ===== -->
-    <nav class="fixed top-0 left-0 w-full z-50 px-6 md:px-12 py-3 glass border-b border-white/5">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <!-- ✅ Updated: Shows "BB" monogram instead of missing logo -->
-            <a href="#" class="logo-wrapper" id="logoLink">
-                <div class="logo-fallback">BB</div>
-                <span class="logo-text text-white">Benudhar <span class="gradient-text">Behera</span></span>
-            </a>
-            <div class="hidden md:flex items-center gap-8">
-                <a href="#work" class="nav-link">Work</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#contact" class="nav-link">Contact</a>
+<!-- ===== HERO ===== -->
+<header id="work" class="min-h-screen flex items-center px-6 md:px-16 lg:px-24 relative overflow-hidden pt-20">
+    <div class="absolute top-1/3 -left-20 w-96 h-96 bg-[#C9A84C]/8 rounded-full blur-3xl -z-10"></div>
+    <div class="absolute bottom-1/4 right-0 w-80 h-80 bg-[#1A3A5C]/12 rounded-full blur-3xl -z-10"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 w-64 h-64 bg-[#2B5F8A]/6 rounded-full blur-3xl -z-10"></div>
+    <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#C9A84C]/30 to-transparent"></div>
+
+    <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-10 items-center py-4">
+        <div class="lg:col-span-7 space-y-5">
+            <div class="flex items-center gap-4">
+                <span class="text-[0.55rem] font-semibold tracking-[0.25em] text-gold uppercase bg-[#C9A84C]/8 px-3.5 py-1.5 rounded-full border border-[#C9A84C]/10">
+                    Backend · Cloud · GenAI
+                </span>
             </div>
-            <div class="md:hidden">
-                <button id="menuToggle" class="text-slate-300 hover:text-white focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                </button>
+            <div class="space-y-0.5">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.08] tracking-tight">
+                    <span class="block text-white">Benudhar</span>
+                    <span class="block gradient-text relative">
+                        Behera
+                        <span class="absolute -top-2 -right-5 text-[0.4rem] text-gold/30 tracking-[0.3em] hidden md:inline-block">✦ ✦</span>
+                    </span>
+                </h1>
+            </div>
+            <div class="flex flex-wrap items-center gap-2.5">
+                <p class="text-lg md:text-xl text-slate-200 font-medium">Lead Backend Engineer</p>
+                <span class="hidden sm:inline-block w-px h-4 bg-white/10"></span>
+                <span class="inline-flex items-center gap-1.5 text-[0.6rem] font-medium text-emerald-400 bg-emerald-400/10 px-3 py-1 rounded-full border border-emerald-400/15">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Open to Work
+                </span>
+                <span class="inline-flex items-center gap-1.5 text-[0.55rem] text-slate-400 bg-white/5 px-3 py-1 rounded-full border border-white/5">
+                    <svg class="w-2.5 h-2.5 text-gold/50" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg>
+                    <span class="font-medium text-white">9+</span> Years
+                </span>
+            </div>
+            <div class="flex flex-wrap gap-1.5 pt-0.5">
+                <span class="badge-tech px-3 py-1 text-[0.65rem]">Java 8–21</span>
+                <span class="badge-tech px-3 py-1 text-[0.65rem]">Spring Boot</span>
+                <span class="badge-tech px-3 py-1 text-[0.65rem]">AWS</span>
+                <span class="badge-tech px-3 py-1 text-[0.65rem]">Kafka</span>
+                <span class="badge-tech px-3 py-1 text-[0.65rem]">Distributed Systems</span>
+                <span class="badge-tech px-3 py-1 text-[0.65rem]">GenAI</span>
+                <span class="badge-tech px-3 py-1 text-[0.65rem]">MCP</span>
+                <span class="badge-tech px-3 py-1 text-[0.65rem]">Python</span>
+                <span class="badge-tech px-3 py-1 text-[0.65rem] border-gold/30 bg-[#C9A84C]/15 text-gold">FastAPI</span>
+            </div>
+            <p class="text-sm md:text-base text-slate-300 leading-relaxed max-w-xl font-light tracking-wide">
+                I design and build resilient, cloud-native backend systems that scale with complexity, 
+                evolve with business needs, and deliver reliable experiences using 
+                <span class="text-white font-medium">Java</span>, 
+                <span class="text-white font-medium">Spring Boot</span>, 
+                <span class="text-white font-medium">Python</span>, 
+                <span class="text-gold font-medium">FastAPI</span>, and 
+                <span class="text-white font-medium">AWS</span>.
+            </p>
+            <div class="flex flex-wrap gap-3 pt-1">
+                <a href="#" id="downloadResume" class="group px-7 py-3 bg-gradient-to-r from-[#1A3A5C] to-[#2B5F8A] rounded-xl font-medium text-white flex items-center gap-2.5 text-sm shadow-lg shadow-[#1A3A5C]/20 hover:shadow-xl hover:shadow-[#C9A84C]/20 transition-all duration-300 hover:-translate-y-0.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    Download Resume
+                </a>
+                <a href="#contact" class="group px-7 py-3 bg-[#1A3A5C]/30 hover:bg-[#1A3A5C]/50 rounded-xl font-medium text-white flex items-center gap-2.5 text-sm border border-[#C9A84C]/15 hover:border-[#C9A84C]/30 transition-all duration-300 hover:-translate-y-0.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    Let's Connect
+                    <span class="text-gold/50 group-hover:text-gold transition-colors">→</span>
+                </a>
+            </div>
+            <div class="flex items-center gap-6 pt-2 border-t border-white/5">
+                <div class="flex items-center gap-2"><span class="text-gold font-bold text-sm">50+</span><span class="text-[0.5rem] text-slate-500 uppercase tracking-wider">APIs</span></div>
+                <div class="w-px h-4 bg-white/5"></div>
+                <div class="flex items-center gap-2"><span class="text-gold font-bold text-sm">15+</span><span class="text-[0.5rem] text-slate-500 uppercase tracking-wider">Cloud Projects</span></div>
+                <div class="w-px h-4 bg-white/5"></div>
+                <div class="flex items-center gap-2"><span class="text-gold font-bold text-sm">100%</span><span class="text-[0.5rem] text-slate-500 uppercase tracking-wider">Passion</span></div>
             </div>
         </div>
-        <div id="mobileMenu" class="md:hidden hidden mt-3 space-y-3 pb-2 border-t border-white/5 pt-3">
-            <a href="#work" class="block text-slate-300 hover:text-white text-sm">Work</a>
-            <a href="#about" class="block text-slate-300 hover:text-white text-sm">About</a>
-            <a href="#experience" class="block text-slate-300 hover:text-white text-sm">Experience</a>
-            <a href="#skills" class="block text-slate-300 hover:text-white text-sm">Skills</a>
-            <a href="#projects" class="block text-slate-300 hover:text-white text-sm">Projects</a>
-            <a href="#contact" class="block text-slate-300 hover:text-white text-sm">Contact</a>
-        </div>
-    </nav>
-
-    <!-- ===== HERO ===== -->
-    <header id="work" class="min-h-screen flex items-center px-6 md:px-16 lg:px-24 relative overflow-hidden pt-20">
-        <div class="absolute top-1/3 -left-20 w-96 h-96 bg-[#C9A84C]/10 rounded-full glow-orb -z-10"></div>
-        <div class="absolute bottom-1/4 right-0 w-80 h-80 bg-[#1A3A5C]/10 rounded-full glow-orb -z-10"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 w-64 h-64 bg-[#2B5F8A]/5 rounded-full glow-orb -z-10"></div>
-
-        <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-10 items-center py-6">
-            <div class="lg:col-span-7 space-y-6">
-                <div class="space-y-1">
-                    <span class="text-xs font-semibold tracking-[0.2em] text-gold uppercase">Backend · Cloud · GENAI</span>
-                    <h1 class="text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight">
-                        <span class="block text-white">Benudhar</span>
-                        <span class="block gradient-text">Behera</span>
-                    </h1>
-                    <div class="flex items-center gap-3 mt-2 flex-wrap">
-                        <p class="text-xl md:text-2xl text-slate-300 font-medium">Lead Backend Engineer</p>
-                        <span class="hidden sm:inline-block w-px h-6 bg-white/8"></span>
-                        <span class="inline-flex items-center gap-2 text-xs font-medium text-gold bg-[#C9A84C]/10 px-3 py-1.5 rounded-full border border-[#C9A84C]/10">
+        <div class="lg:col-span-5 flex justify-center lg:justify-end">
+            <div class="relative float-soft">
+                <div class="relative w-full max-w-[320px] aspect-square rounded-3xl overflow-hidden glass border border-white/5 shadow-2xl shadow-[#C9A84C]/10 hover:shadow-[#C9A84C]/20 transition-shadow duration-500">
+                    <img src="PassPhoto.png" alt="Benudhar Behera" class="w-full h-full object-cover" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+                    <div class="absolute top-4 left-4">
+                        <span class="text-[0.5rem] font-medium text-gold bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-[#C9A84C]/20 flex items-center gap-1.5">
                             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                             Lead Engineer
                         </span>
-                        <span class="inline-flex items-center gap-1 text-xs text-slate-400 bg-white/5 px-3 py-1.5 rounded-full border border-white/5">
-                            <span class="font-bold text-white">9+</span> years
+                    </div>
+                    <div class="absolute bottom-4 left-4">
+                        <span class="text-[0.45rem] text-slate-300 bg-black/50 backdrop-blur-sm px-2.5 py-1.5 rounded-full border border-white/5 flex items-center gap-1.5">
+                            <svg class="w-2.5 h-2.5 text-gold/60" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+                            Bengaluru, IN
                         </span>
                     </div>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                    <span class="badge-tech">Java 8–21</span>
-                    <span class="badge-tech">Spring Boot</span>
-                    <span class="badge-tech">AWS</span>
-                    <span class="badge-tech">Kafka</span>
-                    <span class="badge-tech">Distributed Systems</span>
-                    <span class="badge-tech">GenAI</span>
-					<span class="badge-tech">MCP</span>
-                </div>
-                <p class="text-lg text-slate-400 max-w-xl leading-relaxed">I design and build resilient, cloud-native backend systems that scale with complexity, evolve with business needs, and deliver reliable experiences.</p>
-                <div class="flex flex-wrap gap-4 pt-1">
-                    <a href="#" id="downloadResume" class="px-8 py-3.5 btn-primary rounded-xl font-medium text-white flex items-center gap-2 text-sm" target="_blank">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                        Download Resume
-                    </a>
-                    <a href="#contact" class="px-8 py-3.5 btn-contact rounded-xl font-medium text-white flex items-center gap-2 text-sm">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                        Contact Me
-                    </a>
-                </div>
-            </div>
-            <div class="lg:col-span-5 flex justify-center lg:justify-end">
-                <div class="relative float-soft profile-container">
-                    <div class="w-full rounded-3xl overflow-hidden glass gradient-border border border-white/5 shadow-2xl shadow-[#C9A84C]/5">
-                        <img src="PassPhoto.png" alt="Benudhar Behera" class="w-full h-full object-cover" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></div>
-                        <div class="absolute top-4 left-4 text-[0.6rem] font-semibold text-gold bg-[#1A3A5C]/60 px-3.5 py-1.5 rounded-full backdrop-blur-sm border border-[#C9A84C]/20 flex items-center gap-1.5 lead-badge">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                            Lead Engineer
-                        </div>
-                        <div class="absolute bottom-4 right-4 text-[0.55rem] font-medium text-slate-300 bg-black/50 px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/5 flex items-center gap-1">
-                            <span class="font-bold text-white">9+</span> years
-                        </div>
-                        <div class="absolute bottom-4 left-4 text-[0.5rem] text-slate-400 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm border border-white/5">Bengaluru, IN</div>
+                    <div class="absolute bottom-4 right-4">
+                        <span class="text-[0.45rem] text-white bg-black/50 backdrop-blur-sm px-2.5 py-1.5 rounded-full border border-white/5 flex items-center gap-1.5">
+                            <svg class="w-2.5 h-2.5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg>
+                            <span class="font-medium">9+</span> Years
+                        </span>
                     </div>
+                    <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-[#C9A84C]/5 via-transparent to-[#1A3A5C]/5 blur-xl -z-10"></div>
                 </div>
+                <div class="absolute -bottom-4 -right-4 w-20 h-20 border border-[#C9A84C]/10 rounded-full hidden lg:block"></div>
+                <div class="absolute -top-4 -left-4 w-14 h-14 border border-[#C9A84C]/5 rounded-full hidden lg:block"></div>
             </div>
         </div>
-    </header>
-	
-	
+    </div>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-30 hover:opacity-60 transition-opacity">
+        <span class="text-[0.4rem] text-slate-500 tracking-[0.2em] uppercase">Scroll</span>
+        <svg class="w-3.5 h-3.5 text-slate-400 animate-bounce-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+    </div>
+</header>
+
 <!-- ===== ABOUT ===== -->
 <section id="about" class="px-6 md:px-16 lg:px-24 py-16 max-w-7xl mx-auto">
     <div class="glass rounded-3xl p-8 md:p-10 space-y-6 gradient-border">
@@ -488,41 +534,26 @@
                 Open to opportunities
             </span>
         </div>
-        
         <div class="grid md:grid-cols-12 gap-6">
-            <!-- Left Content - 8 columns -->
             <div class="md:col-span-8 space-y-3 text-slate-300">
-                <p class="text-sm text-gold/80 font-medium tracking-wide">WHO I AM</p>
+                <p class="text-sm text-gold/80 font-medium tracking-wide"><span class="text-gold font-medium">$whoami</span></p>
                 <h2 class="text-xl md:text-2xl font-semibold text-white leading-snug">
                     I build backend systems that <span class="gradient-text">scale, perform, and evolve</span> — without breaking.
                 </h2>
                 <div class="space-y-2.5 text-sm leading-relaxed">
-                    <p>
-                        <span class="text-white font-semibold">9+ years</span> of experience building
-                        scalable backend systems, distributed architectures, and cloud-native platforms
-                        using Java, Spring Boot, Kafka, and AWS.
-                    </p>
-                    <p>
-                        I specialize in designing <span class="text-gold font-medium">resilient,
-                        high-throughput systems</span> with a strong focus on scalability, performance,
-                        and clean architecture.
-                    </p>
-                    <p>
-                        Recently exploring <span class="text-gold font-medium">GenAI, RAG, LLMs, and MCP</span> —
-                        building intelligent applications that connect AI with real-world systems.
-                    </p>
+                    <p><span class="text-white font-semibold">9+ years</span> of experience building scalable backend systems, distributed architectures, and cloud-native platforms using Java, Spring Boot, Kafka, Python, FastAPI, and AWS.</p>
+                    <p>I specialize in designing <span class="text-gold font-medium">resilient, high-throughput systems</span> with a strong focus on scalability, performance, and clean architecture.</p>
+                    <p>Recently exploring <span class="text-gold font-medium">GenAI, RAG, LLMs, and MCP</span> — building intelligent applications that connect AI with real-world systems using Python FastAPI for high-performance API development and AI model serving.</p>
                 </div>
-                <!-- Skill Tags -->
                 <div class="flex flex-wrap gap-2 pt-1">
                     <span class="text-[0.6rem] text-slate-400 bg-white/5 px-2.5 py-1 rounded-full border border-white/5">System Design</span>
                     <span class="text-[0.6rem] text-slate-400 bg-white/5 px-2.5 py-1 rounded-full border border-white/5">Cloud Architecture</span>
                     <span class="text-[0.6rem] text-slate-400 bg-white/5 px-2.5 py-1 rounded-full border border-white/5">Tech Mentoring</span>
                     <span class="text-[0.6rem] text-slate-400 bg-white/5 px-2.5 py-1 rounded-full border border-white/5">Event-Driven</span>
                     <span class="text-[0.6rem] text-slate-400 bg-white/5 px-2.5 py-1 rounded-full border border-white/5">Microservices</span>
+                    <span class="text-[0.6rem] text-slate-400 bg-white/5 px-2.5 py-1 rounded-full border border-white/5">FastAPI</span>
                 </div>
             </div>
-
-            <!-- Right Stats - 4 columns -->
             <div class="md:col-span-4">
                 <div class="grid grid-cols-2 gap-3">
                     <div class="glass-card p-4 rounded-xl text-center hover:border-[#C9A84C]/15 transition-all group">
@@ -544,254 +575,253 @@
                 </div>
             </div>
         </div>
-
-        <!-- Bottom Quote -->
         <div class="pt-3 border-t border-white/5 text-center">
             <p class="text-xs text-slate-400 italic max-w-2xl mx-auto">
-                "I enjoy solving complex engineering problems, simplifying architecture,
-                and turning ideas into production-ready systems."
+                "I enjoy solving complex engineering problems, simplifying architecture, and turning ideas into production-ready systems using both Java and Python ecosystems."
             </p>
         </div>
     </div>
 </section>
 
-  <!-- ===== EXPERIENCE ===== -->
-    <section id="experience" class="px-6 md:px-16 lg:px-24 py-16 max-w-5xl mx-auto">
-        <div class="section-label mb-8">Experience</div>
-        <div class="space-y-10 relative before:absolute before:left-[19px] before:top-0 before:h-full before:w-[1.5px] before:bg-gradient-to-b before:from-[#C9A84C]/30 before:to-[#1A3A5C]/20 before:rounded-full">
-            <div class="relative pl-14">
-                <div class="absolute left-0 top-1.5 w-10 h-10 rounded-full bg-[#C9A84C]/10 border border-[#C9A84C]/15 flex items-center justify-center text-gold text-sm">◆</div>
-                <div class="glass-card rounded-2xl p-7 md:p-9 space-y-2">
-                    <div class="flex flex-wrap justify-between items-start gap-2">
+<!-- ===== EXPERIENCE - ENHANCED & STRUCTURED ===== -->
+<section id="experience" class="px-6 md:px-16 lg:px-24 py-16 max-w-5xl mx-auto">
+    <div class="section-label mb-8">Experience</div>
+    <div class="space-y-6 relative before:absolute before:left-[15px] before:top-4 before:h-[calc(100%-2rem)] before:w-[2px] before:bg-gradient-to-b before:from-[#C9A84C]/30 before:to-[#1A3A5C]/10 before:rounded-full">
+        
+        <!-- Experience 1: Lead Backend Engineer -->
+        <div class="relative pl-12 md:pl-16">
+            <div class="absolute left-0 top-2 w-8 h-8 rounded-full bg-[#C9A84C]/10 border border-[#C9A84C]/20 flex items-center justify-center text-gold text-xs">◆</div>
+            <div class="exp-card rounded-2xl p-6 md:p-8">
+                <div class="exp-header">
+                    <div>
                         <h3 class="text-xl font-bold text-white">Lead Backend Engineer</h3>
-                        <span class="text-xs font-medium text-gold bg-[#C9A84C]/10 px-3 py-1 rounded-full border border-[#C9A84C]/10">2024 – Present</span>
+                        <p class="exp-company">Ernst & Young (EY) · Bangalore</p>
                     </div>
-                    <p class="text-[#D4E4F7]/70 text-sm font-medium">Ernst & Young (EY) · Bangalore</p>
-                    <ul class="list-disc list-inside text-slate-300 text-sm space-y-1.5 mt-3 marker:text-gold">
-                        <li>Architected GenAI platform with RAG & vector search, supporting 70+ req/min with low latency.</li>
-                        <li>Built cloud-native microservices (Java 21, Spring Boot, Kafka) following Hexagonal Architecture.</li>
-                        <li>Reduced API latency by ~40% via caching, JVM tuning, async processing.</li>
-                        <li>Centralized auth (OAuth2, Keycloak, RBAC) for distributed services.</li>
-                    </ul>
+                    <span class="exp-tag">2024 – Present</span>
+                </div>
+                <ul class="exp-desc">
+                    <li>Architected and delivered cloud-native backend and GenAI platforms using Java 21, Spring Boot, Kafka, Python, FastAPI, RAG, and vector search.</li>
+                    <li>Built RAG-powered AI solutions with semantic search and vector databases, supporting 70+ requests/min with low-latency responses.</li>
+                    <li>Improved API performance by ~40% through caching, asynchronous processing, JVM tuning, database optimization, and efficient service design.</li>
+                    <li>Implemented secure distributed systems using OAuth2, Keycloak, RBAC, and centralized authentication/authorization.</li>
+                    <li>Designed AI-ready architectures using LLM tool calling, MCP, and agentic workflows for intelligent enterprise automation.</li>
+                </ul>
+                <div class="tech-stack">
+                    <span>Java 21</span><span>Spring Boot</span><span>Kafka</span><span>Python</span><span>FastAPI</span><span>RAG</span><span>Vector DB</span><span>AWS</span>
                 </div>
             </div>
-            <div class="relative pl-14">
-                <div class="absolute left-0 top-1.5 w-10 h-10 rounded-full bg-[#C9A84C]/10 border border-[#C9A84C]/15 flex items-center justify-center text-gold text-sm">◆</div>
-                <div class="glass-card rounded-2xl p-7 md:p-9 space-y-2">
-                    <div class="flex flex-wrap justify-between items-start gap-2">
+        </div>
+
+        <!-- Experience 2: Senior Backend Engineer -->
+        <div class="relative pl-12 md:pl-16">
+            <div class="absolute left-0 top-2 w-8 h-8 rounded-full bg-[#C9A84C]/10 border border-[#C9A84C]/20 flex items-center justify-center text-gold text-xs">◆</div>
+            <div class="exp-card rounded-2xl p-6 md:p-8">
+                <div class="exp-header">
+                    <div>
                         <h3 class="text-xl font-bold text-white">Senior Backend Engineer</h3>
-                        <span class="text-xs font-medium text-gold bg-[#C9A84C]/10 px-3 py-1 rounded-full border border-[#C9A84C]/10">2021 – 2024</span>
+                        <p class="exp-company">Wipro Limited · Bangalore</p>
                     </div>
-                    <p class="text-[#D4E4F7]/70 text-sm font-medium">Wipro Limited · Bangalore</p>
-                    <ul class="list-disc list-inside text-slate-300 text-sm space-y-1.5 mt-3 marker:text-gold">
-                        <li>Designed microservices with Java, Spring Boot, Kafka for enterprise platform.</li>
-                        <li>Improved API response time by 30% via query optimization & caching.</li>
-                        <li>Optimized database indexing & SQL for high-volume transaction throughput.</li>
-                        <li>Built robust test suites (JUnit 5, Mockito) reducing production defects.</li>
-                    </ul>
+                    <span class="exp-tag">2021 – 2024</span>
+                </div>
+                <ul class="exp-desc">
+                    <li>Designed and developed event-driven microservices using Java, Spring Boot, and Kafka for a large-scale enterprise platform.</li>
+                    <li>Built Python-based data processing pipelines and analytics APIs using FastAPI, serving real-time insights to stakeholders.</li>
+                    <li>Improved API response time by 30% via query optimization, caching strategies, and database indexing.</li>
+                    <li>Led the migration of legacy monolithic services to cloud-native microservices on AWS ECS and Kubernetes.</li>
+                    <li>Established robust test automation with JUnit 5, Mockito, and Pytest, reducing production defects by 25%.</li>
+                </ul>
+                <div class="tech-stack">
+                    <span>Java</span><span>Spring Boot</span><span>Kafka</span><span>Python</span><span>FastAPI</span><span>AWS</span><span>Docker</span><span>Kubernetes</span>
                 </div>
             </div>
-            <div class="relative pl-14">
-                <div class="absolute left-0 top-1.5 w-10 h-10 rounded-full bg-[#C9A84C]/10 border border-[#C9A84C]/15 flex items-center justify-center text-gold text-sm">◆</div>
-                <div class="glass-card rounded-2xl p-7 md:p-9 space-y-2">
-                    <div class="flex flex-wrap justify-between items-start gap-2">
+        </div>
+
+        <!-- Experience 3: Backend Engineer -->
+        <div class="relative pl-12 md:pl-16">
+            <div class="absolute left-0 top-2 w-8 h-8 rounded-full bg-[#C9A84C]/10 border border-[#C9A84C]/20 flex items-center justify-center text-gold text-xs">◆</div>
+            <div class="exp-card rounded-2xl p-6 md:p-8">
+                <div class="exp-header">
+                    <div>
                         <h3 class="text-xl font-bold text-white">Backend Engineer</h3>
-                        <span class="text-xs font-medium text-gold bg-[#C9A84C]/10 px-3 py-1 rounded-full border border-[#C9A84C]/10">2020 – 2021</span>
+                        <p class="exp-company">ITC InfoTech · Bangalore</p>
                     </div>
-                    <p class="text-[#D4E4F7]/70 text-sm font-medium">ITC InfoTech · Bangalore</p>
-                    <ul class="list-disc list-inside text-slate-300 text-sm space-y-1.5 mt-3 marker:text-gold">
-                        <li>Built cloud-native services for e-commerce (order, payment, inventory).</li>
-                        <li>Event-driven architecture with Kafka for async processing.</li>
-                        <li>Designed idempotent APIs & resilient payment workflows.</li>
-                        <li>Improved code quality with SOLID, clean architecture & design patterns.</li>
-                    </ul>
+                    <span class="exp-tag">2020 – 2021</span>
+                </div>
+                <ul class="exp-desc">
+                    <li>Built cloud-native services for e-commerce (order management, payment processing, inventory tracking) using Spring Boot and AWS.</li>
+                    <li>Architected event-driven workflows with Kafka for asynchronous processing and decoupled service communication.</li>
+                    <li>Designed idempotent APIs and resilient payment workflows ensuring transactional integrity and fault tolerance.</li>
+                    <li>Improved code maintainability with SOLID principles, clean architecture, and design patterns.</li>
+                </ul>
+                <div class="tech-stack">
+                    <span>Spring Boot</span><span>Kafka</span><span>AWS</span><span>PostgreSQL</span><span>Redis</span>
                 </div>
             </div>
-            <div class="relative pl-14">
-                <div class="absolute left-0 top-1.5 w-10 h-10 rounded-full bg-[#C9A84C]/10 border border-[#C9A84C]/15 flex items-center justify-center text-gold text-sm">◆</div>
-                <div class="glass-card rounded-2xl p-7 md:p-9 space-y-2">
-                    <div class="flex flex-wrap justify-between items-start gap-2">
+        </div>
+
+        <!-- Experience 4: Software Engineer -->
+        <div class="relative pl-12 md:pl-16">
+            <div class="absolute left-0 top-2 w-8 h-8 rounded-full bg-[#C9A84C]/10 border border-[#C9A84C]/20 flex items-center justify-center text-gold text-xs">◆</div>
+            <div class="exp-card rounded-2xl p-6 md:p-8">
+                <div class="exp-header">
+                    <div>
                         <h3 class="text-xl font-bold text-white">Software Engineer</h3>
-                        <span class="text-xs font-medium text-gold bg-[#C9A84C]/10 px-3 py-1 rounded-full border border-[#C9A84C]/10">2017 – 2020</span>
+                        <p class="exp-company">Silicon Tech Lab · Bhubaneswar</p>
                     </div>
-                    <p class="text-[#D4E4F7]/70 text-sm font-medium">Silicon Tech Lab · Bhubaneswar</p>
-                    <ul class="list-disc list-inside text-slate-300 text-sm space-y-1.5 mt-3 marker:text-gold">
-                        <li>Developed ERP backend modules with Spring MVC, Hibernate, PostgreSQL.</li>
-                        <li>Implemented reusable business components for core ERP functionalities.</li>
-                        <li>Resolved production issues via root cause analysis & performance tuning.</li>
-                    </ul>
+                    <span class="exp-tag">2017 – 2020</span>
+                </div>
+                <ul class="exp-desc">
+                    <li>Developed ERP backend modules with Spring MVC, Hibernate, and PostgreSQL, serving 500+ concurrent users.</li>
+                    <li>Implemented reusable business components and service layers for core ERP functionalities (finance, HR, inventory).</li>
+                    <li>Resolved production issues via root cause analysis, performance tuning, and database query optimization.</li>
+                </ul>
+                <div class="tech-stack">
+                    <span>Spring MVC</span><span>Hibernate</span><span>PostgreSQL</span><span>Java 8</span>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- ===== SKILLS ===== -->
-    <section id="skills" class="px-6 md:px-16 lg:px-24 py-16 max-w-7xl mx-auto">
-        <div class="section-label mb-8">Skills</div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            <div class="glass-card rounded-2xl p-6 space-y-3">
-                <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">Backend</h4>
-                <div class="flex flex-wrap gap-1.5">
-                    <span class="skill-chip">Java</span><span class="skill-chip">Spring Boot</span><span class="skill-chip">Spring Cloud</span>
-                    <span class="skill-chip">WebFlux</span><span class="skill-chip">Hibernate</span><span class="skill-chip">JPA</span>
-                </div>
-            </div>
-            <div class="glass-card rounded-2xl p-6 space-y-3">
-                <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">Cloud &amp; DevOps</h4>
-                <div class="flex flex-wrap gap-1.5">
-                    <span class="skill-chip">AWS (Lambda, EC2, EKS, S3)</span>
-                    <span class="skill-chip">DynamoDB</span><span class="skill-chip">CloudWatch</span>
-                    <span class="skill-chip">IAM</span><span class="skill-chip">Docker</span>
-                    <span class="skill-chip">Kubernetes</span><span class="skill-chip">Terraform</span>
-                </div>
-            </div>
-            <div class="glass-card rounded-2xl p-6 space-y-3">
-                <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">Databases</h4>
-                <div class="flex flex-wrap gap-1.5">
-                    <span class="skill-chip">MongoDB</span><span class="skill-chip">PostgreSQL</span>
-                    <span class="skill-chip">Redis</span><span class="skill-chip">MySQL</span>
-                    <span class="skill-chip">DynamoDB</span>
-                </div>
-            </div>
-            <div class="glass-card rounded-2xl p-6 space-y-3">
-                <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">Messaging</h4>
-                <div class="flex flex-wrap gap-1.5">
-                    <span class="skill-chip">Kafka</span><span class="skill-chip">RabbitMQ</span>
-                    <span class="skill-chip">SNS</span><span class="skill-chip">SQS</span>
-                </div>
-            </div>
-            <div class="glass-card rounded-2xl p-6 space-y-3">
-                <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">AI &amp; GenAI</h4>
-                <div class="flex flex-wrap gap-1.5">
-                    <span class="skill-chip">OpenAI</span><span class="skill-chip">RAG</span>
-                    <span class="skill-chip">LangChain</span><span class="skill-chip">Vector DB</span>
-                    <span class="skill-chip">Prompt Engineering</span>
-					<span class="skill-chip">MCP</span>
-                </div>
-            </div>
-            <div class="glass-card rounded-2xl p-6 space-y-3">
-                <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">Observability</h4>
-                <div class="flex flex-wrap gap-1.5">
-                    <span class="skill-chip">Prometheus</span><span class="skill-chip">Grafana</span>
-                    <span class="skill-chip">ELK</span><span class="skill-chip">Splunk</span>
-                    <span class="skill-chip">CloudWatch</span>
-                </div>
+<!-- ===== SKILLS ===== -->
+<section id="skills" class="px-6 md:px-16 lg:px-24 py-16 max-w-7xl mx-auto">
+    <div class="section-label mb-8">Skills</div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+            <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">Backend</h4>
+            <div class="flex flex-wrap gap-1.5">
+                <span class="skill-chip">Java</span><span class="skill-chip">Spring Boot</span><span class="skill-chip">Spring Cloud</span>
+                <span class="skill-chip">WebFlux</span><span class="skill-chip">Hibernate</span><span class="skill-chip">JPA</span>
+                <span class="skill-chip">Python</span><span class="skill-chip">FastAPI</span><span class="skill-chip">Django</span>
             </div>
         </div>
-    </section>
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+            <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">Cloud &amp; DevOps</h4>
+            <div class="flex flex-wrap gap-1.5">
+                <span class="skill-chip">AWS (Lambda, EC2, EKS, S3)</span><span class="skill-chip">DynamoDB</span>
+                <span class="skill-chip">CloudWatch</span><span class="skill-chip">IAM</span>
+                <span class="skill-chip">Docker</span><span class="skill-chip">Kubernetes</span><span class="skill-chip">Terraform</span>
+            </div>
+        </div>
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+            <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">Databases</h4>
+            <div class="flex flex-wrap gap-1.5">
+                <span class="skill-chip">MongoDB</span><span class="skill-chip">PostgreSQL</span>
+                <span class="skill-chip">Redis</span><span class="skill-chip">MySQL</span><span class="skill-chip">DynamoDB</span>
+            </div>
+        </div>
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+            <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">Messaging</h4>
+            <div class="flex flex-wrap gap-1.5">
+                <span class="skill-chip">Kafka</span><span class="skill-chip">RabbitMQ</span>
+                <span class="skill-chip">SNS</span><span class="skill-chip">SQS</span>
+            </div>
+        </div>
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+            <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">AI &amp; GenAI</h4>
+            <div class="flex flex-wrap gap-1.5">
+                <span class="skill-chip">OpenAI</span><span class="skill-chip">RAG</span><span class="skill-chip">LangChain</span>
+                <span class="skill-chip">Vector DB</span><span class="skill-chip">Prompt Engineering</span>
+                <span class="skill-chip">MCP</span><span class="skill-chip">FastAPI</span>
+            </div>
+        </div>
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+            <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">Observability</h4>
+            <div class="flex flex-wrap gap-1.5">
+                <span class="skill-chip">Prometheus</span><span class="skill-chip">Grafana</span>
+                <span class="skill-chip">ELK</span><span class="skill-chip">Splunk</span><span class="skill-chip">CloudWatch</span>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <!-- ===== PROJECTS ===== -->
-    <section id="projects" class="px-6 md:px-16 lg:px-24 py-16 max-w-7xl mx-auto">
-        <div class="flex items-center justify-between mb-8">
-            <div class="section-label">Projects</div>
-            <a href="https://github.com/benudhar03" target="_blank" rel="noopener noreferrer" class="text-xs text-gold hover:text-[#D4E4F7] transition flex items-center gap-1">
-                View all repositories →
-            </a>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="gh-project-card rounded-xl p-5 space-y-2">
-                <div class="flex items-start justify-between">
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-                            <span class="text-sm font-medium text-white">scheduling-service</span>
-                        </div>
-                        <p class="text-xs text-slate-400 mt-1">Scalable distributed scheduling service with cron-based job execution, persistence, and reliable task processing</p>
+<!-- ===== PROJECTS ===== -->
+<section id="projects" class="px-6 md:px-16 lg:px-24 py-16 max-w-7xl mx-auto">
+    <div class="flex items-center justify-between mb-8">
+        <div class="section-label">Projects</div>
+        <a href="https://github.com/benudhar03" target="_blank" rel="noopener noreferrer" class="text-xs text-gold hover:text-[#D4E4F7] transition flex items-center gap-1">View all repositories →</a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="gh-project-card rounded-xl p-5 space-y-2">
+            <div class="flex items-start justify-between">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                        <span class="text-sm font-medium text-white">scheduling-service</span>
                     </div>
-                    <span class="text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded-full">Public</span>
+                    <p class="text-xs text-slate-400 mt-1">Scalable distributed scheduling service with cron-based job execution, persistence, and reliable task processing</p>
                 </div>
-                <div class="flex items-center gap-4 text-xs text-slate-400">
-                    <span class="flex items-center gap-1">
-                        <span class="lang-dot" style="background:#b07219;"></span> Java
-                    </span>
-                    <span>⭐ 9</span>
-                    <span>🔄 3</span>
-                </div>
+                <span class="text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded-full">Public</span>
             </div>
-            <div class="gh-project-card rounded-xl p-5 space-y-2">
-                <div class="flex items-start justify-between">
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-                            <span class="text-sm font-medium text-white">smart-document-hub</span>
-                        </div>
-                        <p class="text-xs text-slate-400 mt-1">Cloud-native document platform for secure storage, processing, search, metadata management, and analytics</p>
-                    </div>
-                    <span class="text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded-full">Public</span>
-                </div>
-                <div class="flex items-center gap-4 text-xs text-slate-400">
-                    <span class="flex items-center gap-1">
-                        <span class="lang-dot" style="background:#b07219;"></span> Java
-                    </span>
-                    <span>⭐ 7</span>
-                    <span>🔄 2</span>
-                </div>
-            </div>
-            <div class="gh-project-card rounded-xl p-5 space-y-2">
-                <div class="flex items-start justify-between">
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-                            <span class="text-sm font-medium text-white">contextflow-ai-copilot</span>
-                        </div>
-                        <p class="text-xs text-slate-400 mt-1">AI-powered developer copilot using Spring WebFlux, Spring AI, RAG, and LLMs for intelligent code and knowledge assistance</p>
-                    </div>
-                    <span class="text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded-full">Public</span>
-                </div>
-                <div class="flex items-center gap-4 text-xs text-slate-400">
-                    <span class="flex items-center gap-1">
-                        <span class="lang-dot" style="background:#b07219;"></span> Java
-                    </span>
-                    <span>⭐ 12</span>
-                    <span>🔄 4</span>
-                </div>
-            </div>
-            <div class="gh-project-card rounded-xl p-5 space-y-2">
-                <div class="flex items-start justify-between">
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-                            <span class="text-sm font-medium text-white">ar-order-service</span>
-                        </div>
-                        <p class="text-xs text-slate-400 mt-1">Event-driven order management service using Spring Boot, Kafka, MongoDB, and Transactional Outbox for reliable distributed processing</p>
-                    </div>
-                    <span class="text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded-full">Public</span>
-                </div>
-                <div class="flex items-center gap-4 text-xs text-slate-400">
-                    <span class="flex items-center gap-1">
-                        <span class="lang-dot" style="background:#b07219;"></span> Java
-                    </span>
-                    <span>⭐ 6</span>
-                    <span>🔄 1</span>
-                </div>
+            <div class="flex items-center gap-4 text-xs text-slate-400">
+                <span class="flex items-center gap-1"><span class="lang-dot" style="background:#b07219;"></span> Java</span>
+                <span>⭐ 9</span><span>🔄 3</span>
             </div>
         </div>
-    </section>
+        <div class="gh-project-card rounded-xl p-5 space-y-2">
+            <div class="flex items-start justify-between">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                        <span class="text-sm font-medium text-white">smart-document-hub</span>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1">Cloud-native document platform for secure storage, processing, search, metadata management, and analytics</p>
+                </div>
+                <span class="text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded-full">Public</span>
+            </div>
+            <div class="flex items-center gap-4 text-xs text-slate-400">
+                <span class="flex items-center gap-1"><span class="lang-dot" style="background:#b07219;"></span> Java</span>
+                <span>⭐ 7</span><span>🔄 2</span>
+            </div>
+        </div>
+        <div class="gh-project-card rounded-xl p-5 space-y-2">
+            <div class="flex items-start justify-between">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                        <span class="text-sm font-medium text-white">contextflow-ai-copilot</span>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1">AI-powered developer copilot using Spring WebFlux, Spring AI, RAG, FastAPI, and LLMs for intelligent code and knowledge assistance</p>
+                </div>
+                <span class="text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded-full">Public</span>
+            </div>
+            <div class="flex items-center gap-4 text-xs text-slate-400">
+                <span class="flex items-center gap-1"><span class="lang-dot" style="background:#b07219;"></span> Java</span>
+                <span>⭐ 12</span><span>🔄 4</span>
+            </div>
+        </div>
+        <div class="gh-project-card rounded-xl p-5 space-y-2">
+            <div class="flex items-start justify-between">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                        <span class="text-sm font-medium text-white">fastapi-ml-serving</span>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1">High-performance ML model serving platform built with FastAPI, async processing, and automatic OpenAPI documentation</p>
+                </div>
+                <span class="text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded-full">Public</span>
+            </div>
+            <div class="flex items-center gap-4 text-xs text-slate-400">
+                <span class="flex items-center gap-1"><span class="lang-dot" style="background:#3572A5;"></span> Python</span>
+                <span>⭐ 8</span><span>🔄 2</span>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- ===== CERTIFICATIONS ===== -->
 <section class="px-6 md:px-16 lg:px-24 py-16 max-w-7xl mx-auto">
     <div class="flex items-center justify-between mb-8">
         <div class="section-label">Certifications</div>
-        <span class="text-xs text-slate-500 hidden sm:block">
-            <span class="text-gold">5</span> certifications &amp; counting
-        </span>
+        <span class="text-xs text-slate-500 hidden sm:block"><span class="text-gold">5</span> certifications &amp; counting</span>
     </div>
-    
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <!-- EY IT Architecture -->
-        <a href="https://www.credly.com/badges/70ac8f6a-e034-412c-ac3b-ee7ad39e8796" target="_blank" rel="noopener noreferrer" 
-           class="glass-card rounded-xl p-5 transition-all hover:border-[#C9A84C]/20 group relative overflow-hidden">
+        <a href="https://www.credly.com/badges/70ac8f6a-e034-412c-ac3b-ee7ad39e8796" target="_blank" rel="noopener noreferrer" class="glass-card rounded-xl p-5 transition-all hover:border-[#C9A84C]/20 group relative overflow-hidden">
             <div class="absolute top-0 right-0 w-20 h-20 bg-gold/5 rounded-full blur-2xl group-hover:bg-gold/10 transition-all"></div>
             <div class="relative z-10">
                 <div class="flex items-start justify-between">
-                    <div>
-                        <span class="text-2xl block mb-1">🏛️</span>
-                        <h4 class="text-sm font-semibold text-white group-hover:text-gold transition">EY IT Architecture</h4>
-                        <p class="text-xs text-slate-400 mt-0.5">Bronze · 2025</p>
-                    </div>
-                    <svg class="w-4 h-4 text-slate-500 group-hover:text-gold transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                    </svg>
+                    <div><span class="text-2xl block mb-1">🏛️</span><h4 class="text-sm font-semibold text-white group-hover:text-gold transition">EY IT Architecture</h4><p class="text-xs text-slate-400 mt-0.5">Bronze · 2025</p></div>
+                    <svg class="w-4 h-4 text-slate-500 group-hover:text-gold transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                 </div>
                 <div class="mt-2 flex items-center gap-2">
                     <span class="text-[0.5rem] font-medium text-gold/60 bg-gold/5 px-2 py-0.5 rounded-full border border-gold/10">Enterprise Architecture</span>
@@ -799,21 +829,12 @@
                 </div>
             </div>
         </a>
-
-        <!-- EY Applied AI -->
-        <a href="https://www.credly.com/badges/55019f2f-2fd5-4163-ba49-d1bb45de09a3" target="_blank" rel="noopener noreferrer" 
-           class="glass-card rounded-xl p-5 transition-all hover:border-[#C9A84C]/20 group relative overflow-hidden">
+        <a href="https://www.credly.com/badges/55019f2f-2fd5-4163-ba49-d1bb45de09a3" target="_blank" rel="noopener noreferrer" class="glass-card rounded-xl p-5 transition-all hover:border-[#C9A84C]/20 group relative overflow-hidden">
             <div class="absolute top-0 right-0 w-20 h-20 bg-gold/5 rounded-full blur-2xl group-hover:bg-gold/10 transition-all"></div>
             <div class="relative z-10">
                 <div class="flex items-start justify-between">
-                    <div>
-                        <span class="text-2xl block mb-1">🤖</span>
-                        <h4 class="text-sm font-semibold text-white group-hover:text-gold transition">EY Applied AI</h4>
-                        <p class="text-xs text-slate-400 mt-0.5">Bronze · 2024</p>
-                    </div>
-                    <svg class="w-4 h-4 text-slate-500 group-hover:text-gold transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                    </svg>
+                    <div><span class="text-2xl block mb-1">🤖</span><h4 class="text-sm font-semibold text-white group-hover:text-gold transition">EY Applied AI</h4><p class="text-xs text-slate-400 mt-0.5">Bronze · 2024</p></div>
+                    <svg class="w-4 h-4 text-slate-500 group-hover:text-gold transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                 </div>
                 <div class="mt-2 flex items-center gap-2">
                     <span class="text-[0.5rem] font-medium text-gold/60 bg-gold/5 px-2 py-0.5 rounded-full border border-gold/10">Generative AI</span>
@@ -821,21 +842,12 @@
                 </div>
             </div>
         </a>
-
-        <!-- Google Cloud GenAI -->
-        <a href="https://www.coursera.org/account/accomplishments/verify/3WXLD6SP2X3W" target="_blank" rel="noopener noreferrer" 
-           class="glass-card rounded-xl p-5 transition-all hover:border-[#C9A84C]/20 group relative overflow-hidden">
+        <a href="https://www.coursera.org/account/accomplishments/verify/3WXLD6SP2X3W" target="_blank" rel="noopener noreferrer" class="glass-card rounded-xl p-5 transition-all hover:border-[#C9A84C]/20 group relative overflow-hidden">
             <div class="absolute top-0 right-0 w-20 h-20 bg-gold/5 rounded-full blur-2xl group-hover:bg-gold/10 transition-all"></div>
             <div class="relative z-10">
                 <div class="flex items-start justify-between">
-                    <div>
-                        <span class="text-2xl block mb-1">☁️</span>
-                        <h4 class="text-sm font-semibold text-white group-hover:text-gold transition">Google Cloud GenAI</h4>
-                        <p class="text-xs text-slate-400 mt-0.5">Coursera · 2024</p>
-                    </div>
-                    <svg class="w-4 h-4 text-slate-500 group-hover:text-gold transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                    </svg>
+                    <div><span class="text-2xl block mb-1">☁️</span><h4 class="text-sm font-semibold text-white group-hover:text-gold transition">Google Cloud GenAI</h4><p class="text-xs text-slate-400 mt-0.5">Coursera · 2024</p></div>
+                    <svg class="w-4 h-4 text-slate-500 group-hover:text-gold transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                 </div>
                 <div class="mt-2 flex items-center gap-2">
                     <span class="text-[0.5rem] font-medium text-gold/60 bg-gold/5 px-2 py-0.5 rounded-full border border-gold/10">GenAI</span>
@@ -843,21 +855,12 @@
                 </div>
             </div>
         </a>
-
-        <!-- AWS Certified -->
-        <a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener noreferrer" 
-           class="glass-card rounded-xl p-5 transition-all hover:border-[#C9A84C]/20 group relative overflow-hidden">
+        <a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener noreferrer" class="glass-card rounded-xl p-5 transition-all hover:border-[#C9A84C]/20 group relative overflow-hidden">
             <div class="absolute top-0 right-0 w-20 h-20 bg-gold/5 rounded-full blur-2xl group-hover:bg-gold/10 transition-all"></div>
             <div class="relative z-10">
                 <div class="flex items-start justify-between">
-                    <div>
-                        <span class="text-2xl block mb-1">🔷</span>
-                        <h4 class="text-sm font-semibold text-white group-hover:text-gold transition">AWS Solutions Architect</h4>
-                        <p class="text-xs text-slate-400 mt-0.5">Associate · 2023</p>
-                    </div>
-                    <svg class="w-4 h-4 text-slate-500 group-hover:text-gold transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                    </svg>
+                    <div><span class="text-2xl block mb-1">🔷</span><h4 class="text-sm font-semibold text-white group-hover:text-gold transition">AWS Solutions Architect</h4><p class="text-xs text-slate-400 mt-0.5">Associate · 2023</p></div>
+                    <svg class="w-4 h-4 text-slate-500 group-hover:text-gold transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                 </div>
                 <div class="mt-2 flex items-center gap-2">
                     <span class="text-[0.5rem] font-medium text-gold/60 bg-gold/5 px-2 py-0.5 rounded-full border border-gold/10">AWS</span>
@@ -865,21 +868,12 @@
                 </div>
             </div>
         </a>
-
-        <!-- Oracle Java -->
-        <a href="https://education.oracle.com/java" target="_blank" rel="noopener noreferrer" 
-           class="glass-card rounded-xl p-5 transition-all hover:border-[#C9A84C]/20 group relative overflow-hidden">
+        <a href="https://education.oracle.com/java" target="_blank" rel="noopener noreferrer" class="glass-card rounded-xl p-5 transition-all hover:border-[#C9A84C]/20 group relative overflow-hidden">
             <div class="absolute top-0 right-0 w-20 h-20 bg-gold/5 rounded-full blur-2xl group-hover:bg-gold/10 transition-all"></div>
             <div class="relative z-10">
                 <div class="flex items-start justify-between">
-                    <div>
-                        <span class="text-2xl block mb-1">☕</span>
-                        <h4 class="text-sm font-semibold text-white group-hover:text-gold transition">Oracle Java Professional</h4>
-                        <p class="text-xs text-slate-400 mt-0.5">Oracle · 2022</p>
-                    </div>
-                    <svg class="w-4 h-4 text-slate-500 group-hover:text-gold transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                    </svg>
+                    <div><span class="text-2xl block mb-1">☕</span><h4 class="text-sm font-semibold text-white group-hover:text-gold transition">Oracle Java Professional</h4><p class="text-xs text-slate-400 mt-0.5">Oracle · 2022</p></div>
+                    <svg class="w-4 h-4 text-slate-500 group-hover:text-gold transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                 </div>
                 <div class="mt-2 flex items-center gap-2">
                     <span class="text-[0.5rem] font-medium text-gold/60 bg-gold/5 px-2 py-0.5 rounded-full border border-gold/10">Java</span>
@@ -887,8 +881,6 @@
                 </div>
             </div>
         </a>
-
-        <!-- Bonus: Missing cert placeholder -->
         <div class="glass-card rounded-xl p-5 border border-dashed border-white/5 flex items-center justify-center min-h-[120px] hover:border-[#C9A84C]/20 transition-all group">
             <div class="text-center">
                 <span class="text-2xl block mb-1">📚</span>
@@ -899,111 +891,95 @@
     </div>
 </section>
 
-    <!-- ===== CONTACT ===== -->
-    <section id="contact" class="px-6 md:px-16 lg:px-24 py-16 max-w-5xl mx-auto">
-        <div class="glass rounded-3xl p-8 md:p-12 space-y-8 gradient-border">
-            <div class="section-label">Contact</div>
-            <div class="grid md:grid-cols-2 gap-10">
-                <div class="space-y-4">
-                    <div>
-                        <span class="text-gold font-medium block text-xs uppercase tracking-wider">Email</span>
-                        <a href="mailto:benudharbehera003@gmail.com" class="text-slate-300 hover:text-gold transition">benudharbehera003@gmail.com</a>
-                    </div>
-                    <div>
-                        <span class="text-gold font-medium block text-xs uppercase tracking-wider">LinkedIn</span>
-                        <a href="https://www.linkedin.com/in/benudhar-behera03/" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-gold transition">linkedin.com/in/benudhar</a>
-                    </div>
-                    <div>
-                        <span class="text-gold font-medium block text-xs uppercase tracking-wider">GitHub</span>
-                        <a href="https://github.com/benudhar03" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-gold transition">github.com/benudhar</a>
-                    </div>
-                    <a href="#" id="downloadResume2" class="inline-block mt-2 px-6 py-3 bg-[#1A3A5C]/30 hover:bg-[#1A3A5C]/50 rounded-xl transition border border-[#C9A84C]/20 text-sm text-gold hover:text-white">📄 Download Resume</a>
-                </div>
-                <div id="contactFormWrapper">
-                    <form id="contactForm" class="space-y-4 form-fields">
-                        <input type="text" id="formName" placeholder="Your Name" required class="w-full bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C9A84C]/30 transition text-sm" />
-                        <input type="email" id="formEmail" placeholder="Your Email" required class="w-full bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C9A84C]/30 transition text-sm" />
-                        <textarea id="formMessage" rows="3" placeholder="Message" required class="w-full bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C9A84C]/30 transition text-sm resize-none"></textarea>
-                        <button type="submit" class="w-full py-3.5 btn-contact rounded-xl font-medium text-white transition-all">Send Message</button>
-                    </form>
-                    <div id="formSuccess" class="form-success">
-                        <div class="checkmark">✅</div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Thank You!</h3>
-                        <p class="text-slate-300">Your message has been sent successfully. I'll get back to you soon.</p>
-                        <button onclick="resetForm()" class="mt-4 px-6 py-2 btn-primary rounded-xl text-white text-sm">Send another message</button>
-                    </div>
+<!-- ===== CONTACT - FIXED PLACEHOLDER ISSUE ===== -->
+<section id="contact" class="px-6 md:px-16 lg:px-24 py-16 max-w-5xl mx-auto">
+    <div class="glass rounded-3xl p-8 md:p-12 space-y-8 gradient-border">
+        <div class="section-label">Contact</div>
+        <div class="grid md:grid-cols-2 gap-10">
+            <div class="space-y-4">
+                <div><span class="text-gold font-medium block text-xs uppercase tracking-wider">Email</span><a href="mailto:benudharbehera003@gmail.com" class="text-slate-300 hover:text-gold transition">benudharbehera003@gmail.com</a></div>
+                <div><span class="text-gold font-medium block text-xs uppercase tracking-wider">LinkedIn</span><a href="https://www.linkedin.com/in/benudhar-behera03/" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-gold transition">linkedin.com/in/benudhar</a></div>
+                <div><span class="text-gold font-medium block text-xs uppercase tracking-wider">GitHub</span><a href="https://github.com/benudhar03" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-gold transition">github.com/benudhar</a></div>
+                <a href="#" id="downloadResume2" class="inline-block mt-2 px-6 py-3 bg-[#1A3A5C]/30 hover:bg-[#1A3A5C]/50 rounded-xl transition border border-[#C9A84C]/20 text-sm text-gold hover:text-white">📄 Download Resume</a>
+            </div>
+            <div id="contactFormWrapper">
+                <form id="contactForm" class="space-y-4 form-fields">
+                    <input type="text" id="formName" placeholder="Your Name" required class="contact-input w-full bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C9A84C]/30 transition text-sm" />
+                    <input type="email" id="formEmail" placeholder="Your Email" required class="contact-input w-full bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C9A84C]/30 transition text-sm" />
+                    <textarea id="formMessage" rows="3" placeholder="Message" required class="contact-input w-full bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C9A84C]/30 transition text-sm resize-none"></textarea>
+                    <button type="submit" class="w-full py-3.5 btn-contact rounded-xl font-medium text-white transition-all">Send Message</button>
+                </form>
+                <div id="formSuccess" class="form-success">
+                    <div class="checkmark">✅</div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Thank You!</h3>
+                    <p class="text-slate-300">Your message has been sent successfully. I'll get back to you soon.</p>
+                    <button onclick="resetForm()" class="mt-4 px-6 py-2 btn-primary rounded-xl text-white text-sm">Send another message</button>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="text-center text-slate-500 text-xs py-6 border-t border-white/5 max-w-7xl mx-auto px-6">
-        <div class="flex justify-center gap-6 mb-3">
-            <a href="https://www.linkedin.com/in/benudhar-behera03/" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition">LinkedIn</a>
-            <a href="https://github.com/benudhar03" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition">GitHub</a>
-            <a href="mailto:benudharbehera003@gmail.com" class="hover:text-gold transition">Email</a>
-        </div>
-        <p class="text-slate-500/70 tracking-wide">© 2025 <span class="text-gold">Benudhar Behera</span> — Crafted with precision for modern engineering</p>
-    </footer>
+<!-- ===== FOOTER ===== -->
+<footer class="text-center text-slate-500 text-xs py-6 border-t border-white/5 max-w-7xl mx-auto px-6">
+    <div class="flex justify-center gap-6 mb-3">
+        <a href="https://www.linkedin.com/in/benudhar-behera03/" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition">LinkedIn</a>
+        <a href="https://github.com/benudhar03" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition">GitHub</a>
+        <a href="mailto:benudharbehera003@gmail.com" class="hover:text-gold transition">Email</a>
+    </div>
+    <p class="text-slate-500/70 tracking-wide">© 2025 <span class="text-gold">Benudhar Behera</span> — Crafted with precision for modern engineering</p>
+</footer>
 
-    <!-- ===== BACK TO TOP ===== -->
-    <a href="#" class="fixed bottom-8 right-8 glass w-10 h-10 rounded-full flex items-center justify-center text-sm backdrop-blur-xl border border-white/10 hover:border-[#C9A84C]/30 transition-all hover:scale-105 text-gold hover:text-white">↑</a>
+<!-- ===== BACK TO TOP ===== -->
+<a href="#" class="fixed bottom-8 right-8 glass w-10 h-10 rounded-full flex items-center justify-center text-sm backdrop-blur-xl border border-white/10 hover:border-[#C9A84C]/30 transition-all hover:scale-105 text-gold hover:text-white">↑</a>
 
-    <script>
-        // ===== MOBILE MENU =====
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        });
+<script>
+    // Mobile menu toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+        document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
 
-        // ===== RESUME DOWNLOAD =====
-        function downloadResume() {
-            const resumePath = 'Benudhar Behera.pdf';
-            window.open(resumePath, '_blank');
+    // Resume download
+    function downloadResume() {
+        window.open('Benudhar Behera.pdf', '_blank');
+    }
+    document.getElementById('downloadResume').addEventListener('click', function(e) { e.preventDefault(); downloadResume(); });
+    document.getElementById('downloadResume2').addEventListener('click', function(e) { e.preventDefault(); downloadResume(); });
+
+    // Contact form - Fixed: no default values, proper validation
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('formName').value.trim();
+        const email = document.getElementById('formEmail').value.trim();
+        const message = document.getElementById('formMessage').value.trim();
+
+        if (!name || !email || !message) {
+            alert('Please fill in all fields.');
+            return;
         }
 
-        document.getElementById('downloadResume').addEventListener('click', function(e) {
-            e.preventDefault();
-            downloadResume();
-        });
-        document.getElementById('downloadResume2').addEventListener('click', function(e) {
-            e.preventDefault();
-            downloadResume();
-        });
-
-        // ===== CONTACT FORM =====
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const name = document.getElementById('formName').value.trim();
-            const email = document.getElementById('formEmail').value.trim();
-            const message = document.getElementById('formMessage').value.trim();
-
-            if (!name || !email || !message) {
-                alert('Please fill in all fields.');
-                return;
-            }
-
-            if (!email.includes('@') || !email.includes('.')) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-
-            document.querySelector('.form-fields').classList.add('hidden');
-            document.getElementById('formSuccess').classList.add('show');
-
-            console.log('Message from:', name, email, message);
-        });
-
-        function resetForm() {
-            document.getElementById('formName').value = '';
-            document.getElementById('formEmail').value = '';
-            document.getElementById('formMessage').value = '';
-            document.getElementById('formSuccess').classList.remove('show');
-            document.querySelector('.form-fields').classList.remove('hidden');
+        if (!email.includes('@') || !email.includes('.')) {
+            alert('Please enter a valid email address.');
+            return;
         }
-        window.resetForm = resetForm;
-    </script>
+
+        // Show success state
+        document.querySelector('.form-fields').classList.add('hidden');
+        document.getElementById('formSuccess').classList.add('show');
+        
+        // Log the message (in production, send to server)
+        console.log('Message from:', name, email, message);
+    });
+
+    function resetForm() {
+        document.getElementById('formName').value = '';
+        document.getElementById('formEmail').value = '';
+        document.getElementById('formMessage').value = '';
+        document.getElementById('formSuccess').classList.remove('show');
+        document.querySelector('.form-fields').classList.remove('hidden');
+    }
+    window.resetForm = resetForm;
+</script>
 </body>
 </html>
