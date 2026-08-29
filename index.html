@@ -655,11 +655,11 @@
                     </a>
                 </div>
                 <div class="flex items-center gap-6 pt-2 border-t border-white/5">
-                    <div class="flex items-center gap-2"><span class="text-gold font-bold text-sm stat-counter" data-target="50">0</span><span class="text-[0.5rem] text-slate-500 uppercase tracking-wider">APIs</span></div>
+                    <div class="flex items-center gap-2"><span class="text-gold font-bold text-sm stat-counter" data-target="115">0</span><span class="text-[0.5rem] text-slate-500 uppercase tracking-wider">APIs</span></div>
                     <div class="w-px h-4 bg-white/5"></div>
                     <div class="flex items-center gap-2"><span class="text-gold font-bold text-sm stat-counter" data-target="15">0</span><span class="text-[0.5rem] text-slate-500 uppercase tracking-wider">Cloud Projects</span></div>
                     <div class="w-px h-4 bg-white/5"></div>
-                    <div class="flex items-center gap-2"><span class="text-gold font-bold text-sm stat-counter" data-target="100">0</span><span class="text-[0.5rem] text-slate-500 uppercase tracking-wider">Passion</span></div>
+                    <div class="flex items-center gap-2"><span class="text-gold font-bold text-sm stat-counter" data-target="100" data-suffix="%">0</span><span class="text-[0.5rem] text-slate-500 uppercase tracking-wider">Passion</span></div>
                 </div>
             </div>
             <div class="lg:col-span-5 flex justify-center lg:justify-end">
@@ -735,7 +735,7 @@
                             <p class="text-[0.6rem] text-slate-400 mt-0.5">Years</p>
                         </div>
                         <div class="glass-card p-4 rounded-xl text-center hover:border-[#C9A84C]/15 transition-all group">
-                            <div class="text-2xl font-bold gradient-text group-hover:scale-105 transition-transform stat-counter" data-target="50">0</div>
+                            <div class="text-2xl font-bold gradient-text group-hover:scale-105 transition-transform stat-counter" data-target="115">0</div>
                             <p class="text-[0.6rem] text-slate-400 mt-0.5">APIs</p>
                         </div>
                         <div class="glass-card p-4 rounded-xl text-center hover:border-[#C9A84C]/15 transition-all group">
@@ -743,7 +743,7 @@
                             <p class="text-[0.6rem] text-slate-400 mt-0.5">Cloud Projects</p>
                         </div>
                         <div class="glass-card p-4 rounded-xl text-center hover:border-[#C9A84C]/15 transition-all group">
-                            <div class="text-2xl font-bold gradient-text group-hover:scale-105 transition-transform stat-counter" data-target="100">0</div>
+                            <div class="text-2xl font-bold gradient-text group-hover:scale-105 transition-transform stat-counter" data-target="100" data-suffix="%">0</div>
                             <p class="text-[0.6rem] text-slate-400 mt-0.5">Passion</p>
                         </div>
                     </div>
@@ -1178,10 +1178,10 @@
                     const currentValue = Math.floor(eased * target);
 
                     if (progress < 1) {
-                        counter.textContent = currentValue + (target > 100 ? '%' : '');
+                        counter.textContent = currentValue + (counter.dataset.suffix || '');
                         requestAnimationFrame(updateCounter);
                     } else {
-                        counter.textContent = target + (target > 100 ? '%' : '');
+                        counter.textContent = target + (counter.dataset.suffix || '');
                     }
                 }
                 requestAnimationFrame(updateCounter);
