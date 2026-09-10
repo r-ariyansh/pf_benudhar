@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Security hardening: restrict resource origins, framing, forms, plugins and referrer leakage.
+         For strongest enforcement, also configure equivalent HTTP response headers on the server/CDN. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' https://cdn.tailwindcss.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; media-src 'self'; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests;">
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <title>Benudhar Behera · Lead Backend Engineer</title>
 
     <!-- ✅ SEO Meta Tags -->
@@ -414,6 +419,32 @@
         @media (max-width: 640px) { .resume-toast { left: 16px; right: 16px; bottom: 18px; min-width: 0; max-width: none; width: auto; transform: translateY(100px); } .resume-toast.show { transform: translateY(0); } }
         @media (prefers-reduced-motion: reduce) { .btn-download, .btn-download::after, .resume-toast, .resume-spinner { animation: none !important; transition: none !important; } }
 
+        /* --- Resume Download Consent Modal --- */
+        .resume-consent-backdrop {
+            position: fixed; inset: 0; z-index: 10001; display: flex; align-items: center; justify-content: center;
+            padding: 20px; background: rgba(2, 6, 23, .72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .2s ease, visibility .2s ease;
+        }
+        .resume-consent-backdrop.show { opacity: 1; visibility: visible; pointer-events: auto; }
+        .resume-consent-modal {
+            width: min(390px, 100%); background: rgba(10,22,40,.98); border: 1px solid rgba(201,168,76,.18);
+            border-radius: 18px; padding: 22px; box-shadow: 0 24px 80px -20px rgba(0,0,0,.8);
+            transform: translateY(10px) scale(.98); transition: transform .2s ease;
+        }
+        .resume-consent-backdrop.show .resume-consent-modal { transform: translateY(0) scale(1); }
+        .resume-consent-icon { width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+            background: rgba(201,168,76,.1); color: #C9A84C; margin-bottom: 10px; }
+        .resume-consent-modal h3 { color: #F8FAFC; font-size: .95rem; font-weight: 600; margin-bottom: 7px; }
+        .resume-consent-modal p { color: #94A3B8; font-size: .72rem; line-height: 1.55; }
+        .resume-consent-actions { display: flex; justify-content: flex-end; gap: 9px; margin-top: 17px; }
+        .resume-consent-actions button { border-radius: 9px; padding: 8px 13px; font-size: .7rem; font-weight: 600; transition: all .2s ease; }
+        .resume-consent-cancel { color: #CBD5E1; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.03); }
+        .resume-consent-cancel:hover { background: rgba(255,255,255,.07); }
+        .resume-consent-confirm { color: #07111F; background: #C9A84C; }
+        .resume-consent-confirm:hover { filter: brightness(1.08); transform: translateY(-1px); }
+        .resume-consent-actions button:focus-visible { outline: 2px solid #C9A84C; outline-offset: 2px; }
+        @media (prefers-reduced-motion: reduce) { .resume-consent-backdrop, .resume-consent-modal { transition: none !important; } }
+
         /* --- Experience Cards --- */
         .exp-card {
             background: rgba(10, 22, 40, 0.6);
@@ -548,6 +579,19 @@
         <div class="resume-toast-content">
             <div id="resumeToastTitle" class="resume-toast-title">Resume download started</div>
             <div id="resumeToastMessage" class="resume-toast-message">Benudhar Behera.pdf</div>
+        </div>
+    </div>
+
+    <!-- ===== RESUME DOWNLOAD CONSENT ===== -->
+    <div id="resumeConsent" class="resume-consent-backdrop" role="dialog" aria-modal="true" aria-labelledby="resumeConsentTitle" aria-describedby="resumeConsentMessage">
+        <div class="resume-consent-modal">
+            <div class="resume-consent-icon" aria-hidden="true">↓</div>
+            <h3 id="resumeConsentTitle">Benudhar Behera's Resume</h3>
+            <p id="resumeConsentMessage">Your download may be recorded and shared with Benudhar as a notification only — no personal data is collected.</p>
+            <div class="resume-consent-actions">
+                <button type="button" id="resumeConsentCancel" class="resume-consent-cancel">Cancel</button>
+                <button type="button" id="resumeConsentConfirm" class="resume-consent-confirm">Continue download</button>
+            </div>
         </div>
     </div>
 
@@ -921,9 +965,9 @@
                     <div>
                         <div class="flex items-center gap-2">
                             <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-                            <span class="text-sm font-medium text-white">scheduling-service</span>
+                            <span class="text-sm font-medium text-white">distributed-job-scheduler</span>
                         </div>
-                        <p class="text-xs text-slate-400 mt-1">Scalable distributed scheduling service with cron-based job execution, persistence, and reliable task processing</p>
+                        <p class="text-xs text-slate-400 mt-1">Scalable distributed job scheduling service supporting cron-based execution, task orchestration, retries, fault tolerance, and distributed processing using Spring Boot, Kafka, MongoDB, Docker, and Kubernetes.</p>
                     </div>
                     <span class="text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded-full">Public</span>
                 </div>
@@ -939,7 +983,7 @@
                             <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
                             <span class="text-sm font-medium text-white">smart-document-hub</span>
                         </div>
-                        <p class="text-xs text-slate-400 mt-1">Cloud-native document platform for secure storage, processing, search, metadata management, and analytics</p>
+                        <p class="text-xs text-slate-400 mt-1">Smart Document Hub is an enterprise-grade, cloud-native document management system built with Spring Boot and AWS services. It provides intelligent document processing, storage, search, and analytics capabilities with a focus on scalability, security, and performance.</p>
                     </div>
                     <span class="text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded-full">Public</span>
                 </div>
@@ -953,14 +997,14 @@
                     <div>
                         <div class="flex items-center gap-2">
                             <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-                            <span class="text-sm font-medium text-white">contextflow-ai-copilot</span>
+                            <span class="text-sm font-medium text-white">mcp-fin-lab</span>
                         </div>
-                        <p class="text-xs text-slate-400 mt-1">AI-powered developer copilot using Spring WebFlux, Spring AI, RAG, FastAPI, and LLMs for intelligent code and knowledge assistance</p>
+                        <p class="text-xs text-slate-400 mt-1">Production-oriented AI finance platform built with Java 21, Spring Boot, Spring AI, OpenAI, and MCP, combining LLM-powered natural-language interactions, dynamic tool discovery, real-time financial data, and scalable event-driven services.</p>
                     </div>
                     <span class="text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded-full">Public</span>
                 </div>
                 <div class="flex items-center gap-4 text-xs text-slate-400">
-                    <span class="flex items-center gap-1"><span class="lang-dot" style="background:#b07219;"></span> Java</span>
+                    <span class="flex items-center gap-1"><span class="lang-dot" style="background:#b07219;"></span> Java & Python</span>
                     <span>⭐ 12</span><span>🔄 4</span>
                 </div>
             </div>
@@ -969,14 +1013,14 @@
                     <div>
                         <div class="flex items-center gap-2">
                             <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-                            <span class="text-sm font-medium text-white">fastapi-ml-serving</span>
+                            <span class="text-sm font-medium text-white">agentic-finance-ai</span>
                         </div>
-                        <p class="text-xs text-slate-400 mt-1">High-performance ML model serving platform built with FastAPI, async processing, and automatic OpenAPI documentation</p>
+                        <p class="text-xs text-slate-400 mt-1">Finance AI Service — a Spring Boot–based GenAI backend for a personal finance assistant, combining LLM chat, RAG-grounded document Q&A over uploaded financial documents (pgvector), and agentic routing to decide when retrieval is needed</p>
                     </div>
                     <span class="text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded-full">Public</span>
                 </div>
                 <div class="flex items-center gap-4 text-xs text-slate-400">
-                    <span class="flex items-center gap-1"><span class="lang-dot" style="background:#3572A5;"></span> Python</span>
+                    <span class="flex items-center gap-1"><span class="lang-dot" style="background:#3572A5;"></span> Java</span>
                     <span>⭐ 8</span><span>🔄 2</span>
                 </div>
             </div>
@@ -1085,9 +1129,9 @@
                 </div>
                 <div id="contactFormWrapper">
                     <form id="contactForm" class="space-y-4 form-fields">
-                        <input type="text" id="formName" placeholder="Your Name" required class="contact-input w-full bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C9A84C]/30 transition text-sm" />
-                        <input type="email" id="formEmail" placeholder="Your Email" required class="contact-input w-full bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C9A84C]/30 transition text-sm" />
-                        <textarea id="formMessage" rows="3" placeholder="Message" required class="contact-input w-full bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C9A84C]/30 transition text-sm resize-none"></textarea>
+                        <input type="text" id="formName" placeholder="Your Name" required minlength="3" maxlength="15" pattern="[A-Za-z][A-Za-z\s'-]{2,14}" title="Name must be 3 to 15 characters and contain only letters, spaces, apostrophes, or hyphens." autocomplete="name" class="contact-input w-full bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C9A84C]/30 transition text-sm" />
+                        <input type="email" id="formEmail" placeholder="Your Gmail" required pattern="[A-Za-z0-9](?:[A-Za-z0-9.]{4,28}[A-Za-z0-9])?@gmail\.com" title="Please enter a valid Gmail address ending with @gmail.com." autocomplete="email" inputmode="email" class="contact-input w-full bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C9A84C]/30 transition text-sm" />
+                        <textarea id="formMessage" rows="3" placeholder="Message" required minlength="20" maxlength="1000" title="Message must be at least 20 characters." class="contact-input w-full bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C9A84C]/30 transition text-sm resize-none"></textarea>
                         <button type="submit" class="w-full py-3.5 btn-contact rounded-xl font-medium text-white transition-all">Send Message</button>
                     </form>
                     <div id="formSuccess" class="form-success">
@@ -1265,7 +1309,7 @@
         });
 
         // ============================================================
-        // 6. PREMIUM RESUME DOWNLOAD
+        // 6. SECURE RESUME DOWNLOAD
         // ============================================================
         const RESUME_FILE = 'Benudhar Behera.pdf';
         const RESUME_FILENAME = 'Benudhar Behera.pdf';
@@ -1274,8 +1318,12 @@
         const resumeToastIcon = document.getElementById('resumeToastIcon');
         const resumeToastTitle = document.getElementById('resumeToastTitle');
         const resumeToastMessage = document.getElementById('resumeToastMessage');
+        const resumeConsent = document.getElementById('resumeConsent');
+        const resumeConsentCancel = document.getElementById('resumeConsentCancel');
+        const resumeConsentConfirm = document.getElementById('resumeConsentConfirm');
         let resumeToastTimer = null;
         let resumeDownloadInProgress = false;
+        let pendingResumeButton = null;
 
         function showResumeToast(type, title, message) {
             if (!resumeToast) return;
@@ -1304,38 +1352,48 @@
             button.classList.add('success');
             button.setAttribute('aria-busy', 'false');
             button.setAttribute('aria-label', 'Resume downloaded successfully');
-            text.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Downloaded</span>`;
+            text.replaceChildren();
+            const icon = document.createElement('span');
+            icon.setAttribute('aria-hidden', 'true');
+            icon.textContent = '✓';
+            const label = document.createElement('span');
+            label.textContent = 'Downloaded';
+            text.append(icon, label);
             setTimeout(() => {
                 button.classList.remove('success');
-                text.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg><span>Download Resume</span>`;
+                text.replaceChildren();
+                const downloadIcon = document.createElement('span');
+                downloadIcon.setAttribute('aria-hidden', 'true');
+                downloadIcon.textContent = '↓';
+                const downloadLabel = document.createElement('span');
+                downloadLabel.textContent = 'Download Resume';
+                text.append(downloadIcon, downloadLabel);
                 button.setAttribute('aria-label', 'Download Benudhar Behera resume as PDF');
             }, 2500);
         }
 
-        async function verifyResumeFile() {
-            try {
-                const response = await fetch(RESUME_FILE, { method: 'HEAD', cache: 'no-store' });
-                return response.ok;
-            } catch (error) {
-                console.warn('Resume availability check failed:', error);
-                return true;
-            }
+        function openResumeConsent(button) {
+            if (!resumeConsent) return false;
+            pendingResumeButton = button;
+            resumeConsent.classList.add('show');
+            document.body.style.overflow = 'hidden';
+            if (resumeConsentConfirm) resumeConsentConfirm.focus();
+            return true;
+        }
+
+        function closeResumeConsent() {
+            if (!resumeConsent) return;
+            resumeConsent.classList.remove('show');
+            document.body.style.overflow = '';
+            pendingResumeButton = null;
         }
 
         function startResumeDownload() {
-            /*
-             * Open the resume in a dedicated new browser tab.
-             * The browser's PDF viewer then provides its own
-             * download control without replacing the portfolio.
-             */
-            const resumeWindow = window.open(
-                RESUME_FILE,
-                '_blank',
-                'noopener,noreferrer'
-            );
-
+            // Open the resume directly in a new tab after the user's confirmation.
+            // This preserves the browser PDF viewer and avoids unreliable download detection.
+            const resumeWindow = window.open(RESUME_FILE, '_blank', 'noopener,noreferrer');
             if (!resumeWindow) {
-                throw new Error('The browser blocked the new resume tab.');
+                throw new Error('The browser blocked the resume tab.');
             }
         }
 
@@ -1343,25 +1401,39 @@
             event.preventDefault();
             const button = event.currentTarget;
             if (resumeDownloadInProgress) return;
+            openResumeConsent(button);
+        }
+
+        async function confirmResumeDownload() {
+            const button = pendingResumeButton;
+            if (!button || resumeDownloadInProgress) return;
             resumeDownloadInProgress = true;
+            closeResumeConsent();
             setResumeButtonLoading(button, true);
             try {
-                await new Promise(resolve => setTimeout(resolve, 250));
-                const resumeAvailable = await verifyResumeFile();
-                if (!resumeAvailable) throw new Error('Resume file was not found.');
                 startResumeDownload();
                 setResumeButtonSuccess(button);
-                showResumeToast('success', 'Resume download started', RESUME_FILENAME);
+                showResumeToast('success', 'Resume opened successfully', 'Benudhar Behera.pdf');
             } catch (error) {
-                console.error('Resume download failed:', error);
+                console.error('Resume tab could not be opened:', error);
                 setResumeButtonLoading(button, false);
-                showResumeToast('error', 'Download unavailable', 'Please try again in a moment.');
+                showResumeToast('error', 'Could not open resume', 'Please allow pop-ups and try again.');
             } finally {
                 resumeDownloadInProgress = false;
             }
         }
 
         resumeButtons.forEach(button => button.addEventListener('click', handleResumeDownload));
+        if (resumeConsentConfirm) resumeConsentConfirm.addEventListener('click', confirmResumeDownload);
+        if (resumeConsentCancel) resumeConsentCancel.addEventListener('click', closeResumeConsent);
+        if (resumeConsent) {
+            resumeConsent.addEventListener('click', event => {
+                if (event.target === resumeConsent) closeResumeConsent();
+            });
+        }
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && resumeConsent && resumeConsent.classList.contains('show')) closeResumeConsent();
+        });
 
         // ============================================================
         // 7. CONTACT FORM
@@ -1369,23 +1441,45 @@
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const name = document.getElementById('formName').value.trim();
-            const email = document.getElementById('formEmail').value.trim();
-            const message = document.getElementById('formMessage').value.trim();
+            const nameField = document.getElementById('formName');
+            const emailField = document.getElementById('formEmail');
+            const messageField = document.getElementById('formMessage');
 
-            if (!name || !email || !message) {
-                alert('Please fill in all fields.');
+            const name = nameField.value.trim();
+            const email = emailField.value.trim();
+            const message = messageField.value.trim();
+
+            // Enforce a clean 3-15 character name before allowing submission.
+            const namePattern = /^[A-Za-z][A-Za-z\s'-]{2,14}$/;
+            if (!name || name.length < 3 || name.length > 15 || !namePattern.test(name)) {
+                alert('Please enter a valid name between 3 and 15 characters.');
+                nameField.focus();
                 return;
             }
 
-            if (!email.includes('@') || !email.includes('.')) {
-                alert('Please enter a valid email address.');
+            // Accept only properly formatted Gmail addresses.
+            const gmailPattern = /^[A-Za-z0-9](?:[A-Za-z0-9.]{4,28}[A-Za-z0-9])?@gmail\.com$/i;
+            if (!gmailPattern.test(email)) {
+                alert('Please enter a valid Gmail address ending with @gmail.com.');
+                emailField.focus();
+                return;
+            }
+
+            // Require meaningful message content with at least 20 characters.
+            if (!message || message.length < 20) {
+                alert('Please enter a message with at least 20 characters.');
+                messageField.focus();
+                return;
+            }
+
+            // Re-check the browser's native validation rules before submission.
+            if (!this.checkValidity()) {
+                this.reportValidity();
                 return;
             }
 
             document.querySelector('.form-fields').classList.add('hidden');
             document.getElementById('formSuccess').classList.add('show');
-            console.log('Message from:', name, email, message);
         });
 
         function resetForm() {
@@ -1426,7 +1520,6 @@
             document.body.classList.remove('keyboard-nav');
         });
 
-        console.log('✅ Portfolio enhanced with premium features!');
     </script>
 
     <!-- ============================================================
