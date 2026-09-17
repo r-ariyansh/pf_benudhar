@@ -522,7 +522,67 @@
             color: #D4E4F7;
         }
 
+        /* --- Compact Skills --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.85rem;
+        }
+        .skill-group {
+            padding: 1rem 1.05rem;
+            border: 1px solid rgba(201,168,76,.07);
+            border-radius: 14px;
+            background: rgba(10,22,40,.38);
+            transition: border-color .25s ease, background .25s ease, transform .25s ease;
+        }
+        .skill-group:hover {
+            border-color: rgba(201,168,76,.18);
+            background: rgba(26,58,92,.22);
+            transform: translateY(-2px);
+        }
+        .skill-group-header {
+            display: flex;
+            align-items: center;
+            gap: .55rem;
+            margin-bottom: .7rem;
+        }
+        .skill-group-header h4 {
+            color: #E8EDF5;
+            font-size: .67rem;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+        .skill-icon {
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 24px;
+            border-radius: 7px;
+            color: #C9A84C;
+            background: rgba(201,168,76,.08);
+            border: 1px solid rgba(201,168,76,.1);
+            font-size: .72rem;
+        }
+        .skill-list { display: flex; flex-wrap: wrap; gap: .38rem; }
+        .skill-group .skill-chip {
+            padding: .25rem .58rem;
+            font-size: .61rem;
+            background: rgba(255,255,255,.025);
+            border-color: rgba(255,255,255,.06);
+        }
+        @media (max-width: 900px) {
+            .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 560px) {
+            .skills-grid { grid-template-columns: 1fr; }
+            .skill-group { padding: .9rem; }
+        }
+
         /* --- Contact Form --- */
+
         .form-success {
             display: none;
             text-align: center;
@@ -541,6 +601,23 @@
         .form-fields.hidden {
             display: none;
         }
+        .field-error {
+            display: none;
+            margin-top: -0.55rem;
+            padding-left: .25rem;
+            color: #FCA5A5;
+            font-size: .68rem;
+            line-height: 1.35;
+        }
+        .field-error.show { display: block; }
+        .contact-input.invalid {
+            border-color: rgba(248,113,113,.55) !important;
+            box-shadow: 0 0 0 3px rgba(248,113,113,.05);
+        }
+        .contact-input.valid {
+            border-color: rgba(52,211,153,.25);
+        }
+
         .contact-input::placeholder {
             color: #64748b;
             opacity: 1;
@@ -669,19 +746,14 @@
                     <span class="badge-tech px-3 py-1 text-[0.65rem]">AWS</span>
                     <span class="badge-tech px-3 py-1 text-[0.65rem]">Kafka</span>
                     <span class="badge-tech px-3 py-1 text-[0.65rem]">Distributed Systems</span>
-                    <span class="badge-tech px-3 py-1 text-[0.65rem]">GenAI</span>
+                    <span class="badge-tech px-3 py-1 text-[0.65rem] border-gold/30 bg-[#C9A84C]/15 text-gold">GenAI</span>
                     <span class="badge-tech px-3 py-1 text-[0.65rem]">MCP</span>
                     <span class="badge-tech px-3 py-1 text-[0.65rem]">Python</span>
-                    <span class="badge-tech px-3 py-1 text-[0.65rem] border-gold/30 bg-[#C9A84C]/15 text-gold">FastAPI</span>
+                    <span class="badge-tech px-3 py-1 text-[0.65rem]">FastAPI</span>
                 </div>
                 <p class="text-sm md:text-base text-slate-300 leading-relaxed max-w-xl font-light tracking-wide">
-                    I design and build resilient, cloud-native backend systems that scale with complexity,
-                    evolve with business needs, and deliver reliable experiences using
-                    <span class="text-white font-medium">Java</span>,
-                    <span class="text-white font-medium">Spring Boot</span>,
-                    <span class="text-white font-medium">Python</span>,
-                    <span class="text-gold font-medium">FastAPI</span>, and
-                    <span class="text-white font-medium">AWS</span>.
+                    I architect and build resilient, cloud-native backend systems with Java, Spring Boot, Python, FastAPI, Kafka, AWS, and modern GenAI technologies such as <span class="text-gold font-medium"> RAG, LLMs, and MCP </span> —designed for scalability, reliability, and continuous evolution.
+                    
                 </p>
                 <div class="flex flex-wrap gap-3 pt-1">
                     <a href="Benudhar Behera.pdf" target="_blank" rel="noopener noreferrer" class="btn-download resume-download-btn group px-7 py-3 bg-gradient-to-r from-[#1A3A5C] to-[#2B5F8A] rounded-xl font-medium text-white flex items-center gap-2.5 text-sm shadow-lg shadow-[#1A3A5C]/20 hover:shadow-xl hover:shadow-[#C9A84C]/20" aria-label="Download Benudhar Behera resume as PDF">
@@ -903,51 +975,54 @@
 
     <!-- ===== SKILLS ===== -->
     <section id="skills" class="px-6 md:px-16 lg:px-24 py-16 max-w-7xl mx-auto reveal-section">
-        <div class="section-label mb-8">Skills</div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            <div class="glass-card rounded-2xl p-6 space-y-3">
-                <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">Backend</h4>
-                <div class="flex flex-wrap gap-1.5">
+        <div class="flex items-center justify-between mb-7">
+            <div class="section-label">Skills</div>
+            <span class="text-[0.55rem] text-slate-500 hidden sm:block">Core engineering stack</span>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-group">
+                <div class="skill-group-header"><span class="skill-icon">⌘</span><h4>Backend Engineering</h4></div>
+                <div class="skill-list">
                     <span class="skill-chip">Java</span><span class="skill-chip">Spring Boot</span><span class="skill-chip">Spring Cloud</span>
                     <span class="skill-chip">WebFlux</span><span class="skill-chip">Hibernate</span><span class="skill-chip">JPA</span>
                     <span class="skill-chip">Python</span><span class="skill-chip">FastAPI</span><span class="skill-chip">Django</span>
                 </div>
             </div>
-            <div class="glass-card rounded-2xl p-6 space-y-3">
-                <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">Cloud &amp; DevOps</h4>
-                <div class="flex flex-wrap gap-1.5">
-                    <span class="skill-chip">AWS (Lambda, EC2, EKS, S3)</span><span class="skill-chip">DynamoDB</span>
-                    <span class="skill-chip">CloudWatch</span><span class="skill-chip">IAM</span>
+            <div class="skill-group">
+                <div class="skill-group-header"><span class="skill-icon">☁</span><h4>Cloud &amp; DevOps</h4></div>
+                <div class="skill-list">
+                    <span class="skill-chip">AWS</span><span class="skill-chip">Lambda</span><span class="skill-chip">EC2</span><span class="skill-chip">EKS</span>
+                    <span class="skill-chip">S3</span><span class="skill-chip">CloudWatch</span><span class="skill-chip">IAM</span>
                     <span class="skill-chip">Docker</span><span class="skill-chip">Kubernetes</span><span class="skill-chip">Terraform</span>
                 </div>
             </div>
-            <div class="glass-card rounded-2xl p-6 space-y-3">
-                <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">Databases</h4>
-                <div class="flex flex-wrap gap-1.5">
-                    <span class="skill-chip">MongoDB</span><span class="skill-chip">PostgreSQL</span>
-                    <span class="skill-chip">Redis</span><span class="skill-chip">MySQL</span><span class="skill-chip">DynamoDB</span>
+            <div class="skill-group">
+                <div class="skill-group-header"><span class="skill-icon">◈</span><h4>Data &amp; Storage</h4></div>
+                <div class="skill-list">
+                    <span class="skill-chip">PostgreSQL</span><span class="skill-chip">MongoDB</span><span class="skill-chip">MySQL</span>
+                    <span class="skill-chip">Redis</span><span class="skill-chip">DynamoDB</span><span class="skill-chip">Vector DB</span>
                 </div>
             </div>
-            <div class="glass-card rounded-2xl p-6 space-y-3">
-                <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">Messaging</h4>
-                <div class="flex flex-wrap gap-1.5">
-                    <span class="skill-chip">Kafka</span><span class="skill-chip">RabbitMQ</span>
-                    <span class="skill-chip">SNS</span><span class="skill-chip">SQS</span>
+            <div class="skill-group">
+                <div class="skill-group-header"><span class="skill-icon">↯</span><h4>Messaging &amp; Distributed Systems</h4></div>
+                <div class="skill-list">
+                    <span class="skill-chip">Kafka</span><span class="skill-chip">RabbitMQ</span><span class="skill-chip">SNS</span><span class="skill-chip">SQS</span>
+                    <span class="skill-chip">Event-Driven Architecture</span><span class="skill-chip">Microservices</span>
                 </div>
             </div>
-            <div class="glass-card rounded-2xl p-6 space-y-3">
-                <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">AI &amp; GenAI</h4>
-                <div class="flex flex-wrap gap-1.5">
+            <div class="skill-group">
+                <div class="skill-group-header"><span class="skill-icon">✦</span><h4>AI &amp; GenAI</h4></div>
+                <div class="skill-list">
                     <span class="skill-chip">OpenAI</span><span class="skill-chip">RAG</span><span class="skill-chip">LangChain</span>
-                    <span class="skill-chip">Vector DB</span><span class="skill-chip">Prompt Engineering</span>
-                    <span class="skill-chip">MCP</span><span class="skill-chip">FastAPI</span>
+                    <span class="skill-chip">Prompt Engineering</span><span class="skill-chip">MCP</span><span class="skill-chip">LLM Applications</span>
                 </div>
             </div>
-            <div class="glass-card rounded-2xl p-6 space-y-3">
-                <h4 class="text-xs font-semibold text-gold tracking-wider uppercase">Observability</h4>
-                <div class="flex flex-wrap gap-1.5">
-                    <span class="skill-chip">Prometheus</span><span class="skill-chip">Grafana</span>
-                    <span class="skill-chip">ELK</span><span class="skill-chip">Splunk</span><span class="skill-chip">CloudWatch</span>
+            <div class="skill-group">
+                <div class="skill-group-header"><span class="skill-icon">◉</span><h4>Observability</h4></div>
+                <div class="skill-list">
+                    <span class="skill-chip">Prometheus</span><span class="skill-chip">Grafana</span><span class="skill-chip">ELK</span>
+                    <span class="skill-chip">Splunk</span><span class="skill-chip">CloudWatch</span>
                 </div>
             </div>
         </div>
@@ -1129,9 +1204,18 @@
                 </div>
                 <div id="contactFormWrapper">
                     <form id="contactForm" class="space-y-4 form-fields">
-                        <input type="text" id="formName" placeholder="Your Name" required minlength="3" maxlength="15" pattern="[A-Za-z][A-Za-z\s'-]{2,14}" title="Name must be 3 to 15 characters and contain only letters, spaces, apostrophes, or hyphens." autocomplete="name" class="contact-input w-full bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C9A84C]/30 transition text-sm" />
-                        <input type="email" id="formEmail" placeholder="Your Gmail" required pattern="[A-Za-z0-9](?:[A-Za-z0-9.]{4,28}[A-Za-z0-9])?@gmail\.com" title="Please enter a valid Gmail address ending with @gmail.com." autocomplete="email" inputmode="email" class="contact-input w-full bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C9A84C]/30 transition text-sm" />
-                        <textarea id="formMessage" rows="3" placeholder="Message" required minlength="20" maxlength="1000" title="Message must be at least 20 characters." class="contact-input w-full bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C9A84C]/30 transition text-sm resize-none"></textarea>
+                        <div>
+                            <input type="text" id="formName" placeholder="Your Name" required minlength="3" maxlength="15" pattern="[A-Za-z][A-Za-z\s'-]{2,14}" title="Name must be 3 to 15 characters and contain only letters, spaces, apostrophes, or hyphens." autocomplete="name" class="contact-input w-full bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C9A84C]/30 transition text-sm" aria-describedby="formNameError" />
+                            <p id="formNameError" class="field-error" role="alert"></p>
+                        </div>
+                        <div>
+                            <input type="email" id="formEmail" placeholder="Your Gmail" required pattern="[A-Za-z0-9](?:[A-Za-z0-9.]{4,28}[A-Za-z0-9])?@gmail\.com" title="Please enter a valid Gmail address ending with @gmail.com." autocomplete="email" inputmode="email" class="contact-input w-full bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C9A84C]/30 transition text-sm" aria-describedby="formEmailError" />
+                            <p id="formEmailError" class="field-error" role="alert"></p>
+                        </div>
+                        <div>
+                            <textarea id="formMessage" rows="3" placeholder="Message" required minlength="20" maxlength="1000" title="Message must be at least 20 characters." class="contact-input w-full bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C9A84C]/30 transition text-sm resize-none" aria-describedby="formMessageError"></textarea>
+                            <p id="formMessageError" class="field-error" role="alert"></p>
+                        </div>
                         <button type="submit" class="w-full py-3.5 btn-contact rounded-xl font-medium text-white transition-all">Send Message</button>
                     </form>
                     <div id="formSuccess" class="form-success">
@@ -1438,45 +1522,69 @@
         // ============================================================
         // 7. CONTACT FORM
         // ============================================================
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        const contactForm = document.getElementById('contactForm');
+        const nameField = document.getElementById('formName');
+        const emailField = document.getElementById('formEmail');
+        const messageField = document.getElementById('formMessage');
+
+        const fieldErrors = {
+            formName: document.getElementById('formNameError'),
+            formEmail: document.getElementById('formEmailError'),
+            formMessage: document.getElementById('formMessageError')
+        };
+
+        const gmailPattern = /^[A-Za-z0-9](?:[A-Za-z0-9.]{4,28}[A-Za-z0-9])?@gmail\.com$/i;
+        const namePattern = /^[A-Za-z][A-Za-z\s'-]{2,14}$/;
+
+        function setFieldError(field, message) {
+            const error = fieldErrors[field.id];
+            error.textContent = message;
+            error.classList.toggle('show', Boolean(message));
+            field.classList.toggle('invalid', Boolean(message));
+            field.classList.toggle('valid', !message && field.value.trim().length > 0);
+            field.setAttribute('aria-invalid', Boolean(message));
+        }
+
+        function validateName() {
+            const value = nameField.value.trim();
+            if (!value) return setFieldError(nameField, 'Name is required.');
+            if (value.length < 3 || value.length > 15) return setFieldError(nameField, 'Name must be between 3 and 15 characters.');
+            if (!namePattern.test(value)) return setFieldError(nameField, 'Name can contain only letters, spaces, apostrophes, or hyphens.');
+            setFieldError(nameField, '');
+            return true;
+        }
+
+        function validateEmail() {
+            const value = emailField.value.trim();
+            if (!value) return setFieldError(emailField, 'Gmail address is required.');
+            if (!gmailPattern.test(value)) return setFieldError(emailField, 'Please enter a valid Gmail address ending with @gmail.com.');
+            setFieldError(emailField, '');
+            return true;
+        }
+
+        function validateMessage() {
+            const value = messageField.value.trim();
+            if (!value) return setFieldError(messageField, 'Message is required.');
+            if (value.length < 20) return setFieldError(messageField, 'Message must be at least 20 characters.');
+            if (value.length > 1000) return setFieldError(messageField, 'Message must not exceed 1000 characters.');
+            setFieldError(messageField, '');
+            return true;
+        }
+
+        nameField.addEventListener('blur', validateName);
+        emailField.addEventListener('blur', validateEmail);
+        messageField.addEventListener('blur', validateMessage);
+
+        contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const nameField = document.getElementById('formName');
-            const emailField = document.getElementById('formEmail');
-            const messageField = document.getElementById('formMessage');
+            const nameValid = validateName() === true;
+            const emailValid = validateEmail() === true;
+            const messageValid = validateMessage() === true;
 
-            const name = nameField.value.trim();
-            const email = emailField.value.trim();
-            const message = messageField.value.trim();
-
-            // Enforce a clean 3-15 character name before allowing submission.
-            const namePattern = /^[A-Za-z][A-Za-z\s'-]{2,14}$/;
-            if (!name || name.length < 3 || name.length > 15 || !namePattern.test(name)) {
-                alert('Please enter a valid name between 3 and 15 characters.');
-                nameField.focus();
-                return;
-            }
-
-            // Accept only properly formatted Gmail addresses.
-            const gmailPattern = /^[A-Za-z0-9](?:[A-Za-z0-9.]{4,28}[A-Za-z0-9])?@gmail\.com$/i;
-            if (!gmailPattern.test(email)) {
-                alert('Please enter a valid Gmail address ending with @gmail.com.');
-                emailField.focus();
-                return;
-            }
-
-            // Require meaningful message content with at least 20 characters.
-            if (!message || message.length < 20) {
-                alert('Please enter a message with at least 20 characters.');
-                messageField.focus();
-                return;
-            }
-
-            // Re-check the browser's native validation rules before submission.
-            if (!this.checkValidity()) {
-                this.reportValidity();
-                return;
-            }
+            if (!nameValid) return nameField.focus();
+            if (!emailValid) return emailField.focus();
+            if (!messageValid) return messageField.focus();
 
             document.querySelector('.form-fields').classList.add('hidden');
             document.getElementById('formSuccess').classList.add('show');
@@ -1488,6 +1596,8 @@
             document.getElementById('formMessage').value = '';
             document.getElementById('formSuccess').classList.remove('show');
             document.querySelector('.form-fields').classList.remove('hidden');
+            [nameField, emailField, messageField].forEach(field => setFieldError(field, ''));
+            Object.values(fieldErrors).forEach(error => error.textContent = '');
         }
         window.resetForm = resetForm;
 
