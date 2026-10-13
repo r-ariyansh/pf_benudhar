@@ -445,81 +445,68 @@
         .resume-consent-actions button:focus-visible { outline: 2px solid #C9A84C; outline-offset: 2px; }
         @media (prefers-reduced-motion: reduce) { .resume-consent-backdrop, .resume-consent-modal { transition: none !important; } }
 
-        /* --- Experience Cards --- */
-        .exp-card {
-            background: rgba(10, 22, 40, 0.6);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(201, 168, 76, 0.06);
-            transition: all 0.3s ease;
+        /* --- Experience section: clean, readable career timeline --- */
+        #experience .experience-list { position: relative; display: grid; gap: 1.25rem; }
+        #experience .experience-list::before {
+            content: ""; position: absolute; left: 17px; top: 24px; bottom: 24px; width: 1px;
+            background: linear-gradient(to bottom, rgba(201,168,76,.42), rgba(43,95,138,.12));
         }
-        .exp-card:hover {
-            border-color: rgba(201, 168, 76, 0.2);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px -12px rgba(201, 168, 76, 0.08);
+        #experience .experience-item { position: relative; padding-left: 3.5rem; }
+        #experience .experience-marker {
+            position: absolute; left: 5px; top: 1.6rem; width: 25px; height: 25px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; color: #C9A84C; font-size: .58rem;
+            background: #101d2d; border: 1px solid rgba(201,168,76,.38); box-shadow: 0 0 0 5px #0A0A0F;
         }
-        .exp-card .exp-header {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 0.75rem;
+        #experience .exp-card {
+            position: relative; overflow: hidden; padding: 1.65rem 1.75rem;
+            background: linear-gradient(145deg, rgba(15,29,47,.88), rgba(10,22,40,.72));
+            border: 1px solid rgba(148,163,184,.13); border-radius: 18px;
+            transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
         }
-        .exp-card .exp-company {
-            font-size: 0.8rem;
-            color: #94A3B8;
-            letter-spacing: 0.02em;
+        #experience .exp-card::before {
+            content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+            background: linear-gradient(to bottom, rgba(201,168,76,.75), rgba(43,95,138,.25));
         }
-        .exp-card .exp-tag {
-            font-size: 0.55rem;
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            background: rgba(201, 168, 76, 0.08);
-            border: 1px solid rgba(201, 168, 76, 0.06);
-            padding: 0.2rem 0.7rem;
-            border-radius: 100px;
-            color: #C9A84C;
+        #experience .exp-card:hover {
+            border-color: rgba(201,168,76,.28); transform: translateY(-2px);
+            box-shadow: 0 14px 36px -24px rgba(201,168,76,.28);
         }
-        .exp-card .exp-desc {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.4rem;
-            margin-top: 0.5rem;
+        #experience .exp-header {
+            display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start;
+            gap: .75rem 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(148,163,184,.12);
         }
-        .exp-card .exp-desc li {
-            display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            color: #CBD5E1;
-            line-height: 1.5;
+        #experience .exp-role { color: #F8FAFC; font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 600; letter-spacing: -.025em; line-height: 1.35; }
+        #experience .exp-company { margin-top: .35rem; color: #A8B5C7; font-size: .82rem; line-height: 1.5; }
+        #experience .exp-tag {
+            display: inline-flex; align-items: center; white-space: nowrap; padding: .38rem .72rem;
+            border: 1px solid rgba(201,168,76,.2); border-radius: 8px; background: rgba(201,168,76,.07);
+            color: #DCC47E; font-size: .68rem; font-weight: 600; letter-spacing: .015em;
         }
-        .exp-card .exp-desc li::before {
-            content: "▹";
-            color: #C9A84C;
-            font-size: 0.7rem;
-            opacity: 0.7;
+        #experience .exp-desc { display: grid; gap: .78rem; margin-top: 1.15rem; list-style: none; }
+        #experience .exp-desc li {
+            position: relative; padding-left: 1.1rem; color: #C8D2DF; font-size: .86rem;
+            line-height: 1.75; font-weight: 400; letter-spacing: .002em;
         }
-        .exp-card .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            margin-top: 0.75rem;
-            padding-top: 0.75rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.06);
+        #experience .exp-desc li::before {
+            content: ""; position: absolute; left: 0; top: .72em; width: 5px; height: 5px;
+            border-radius: 50%; background: #C9A84C; opacity: .82;
         }
-        .exp-card .tech-stack span {
-            background: rgba(26, 58, 92, 0.3);
-            border: 1px solid rgba(201, 168, 76, 0.04);
-            padding: 0.15rem 0.6rem;
-            border-radius: 100px;
-            font-size: 0.6rem;
-            color: #94A3B8;
-            letter-spacing: 0.01em;
+        #experience .tech-stack {
+            display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.25rem; padding-top: 1rem;
+            border-top: 1px solid rgba(148,163,184,.1);
         }
-        .exp-card .tech-stack span:hover {
-            background: rgba(201, 168, 76, 0.08);
-            color: #D4E4F7;
+        #experience .tech-stack span {
+            padding: .3rem .62rem; border-radius: 7px; background: rgba(43,95,138,.13);
+            border: 1px solid rgba(148,163,184,.11); color: #AEBED1; font-size: .66rem; line-height: 1.35;
+        }
+        @media (max-width: 640px) {
+            #experience .experience-list::before { left: 10px; }
+            #experience .experience-item { padding-left: 2.15rem; }
+            #experience .experience-marker { left: 0; width: 21px; height: 21px; top: 1.35rem; }
+            #experience .exp-card { padding: 1.2rem 1.05rem; border-radius: 15px; }
+            #experience .exp-role { font-size: 1.02rem; }
+            #experience .exp-desc li { font-size: .82rem; line-height: 1.72; }
+            #experience .exp-header { gap: .65rem; }
         }
 
         /* --- Compact Skills --- */
@@ -743,16 +730,15 @@
                 <div class="flex flex-wrap gap-1.5 pt-0.5">
                     <span class="badge-tech px-3 py-1 text-[0.65rem]">Java 8–21</span>
                     <span class="badge-tech px-3 py-1 text-[0.65rem]">Spring Boot</span>
+					<span class="badge-tech px-3 py-1 text-[0.65rem]">Kafka</span>
                     <span class="badge-tech px-3 py-1 text-[0.65rem]">AWS</span>
-                    <span class="badge-tech px-3 py-1 text-[0.65rem]">Kafka</span>
                     <span class="badge-tech px-3 py-1 text-[0.65rem]">Distributed Systems</span>
+					<span class="badge-tech px-3 py-1 text-[0.65rem]">Python</span>
                     <span class="badge-tech px-3 py-1 text-[0.65rem] border-gold/30 bg-[#C9A84C]/15 text-gold">GenAI</span>
-                    <span class="badge-tech px-3 py-1 text-[0.65rem]">MCP</span>
-                    <span class="badge-tech px-3 py-1 text-[0.65rem]">Python</span>
-                    <span class="badge-tech px-3 py-1 text-[0.65rem]">FastAPI</span>
+                    
                 </div>
                 <p class="text-sm md:text-base text-slate-300 leading-relaxed max-w-xl font-light tracking-wide">
-                    I architect and build resilient, cloud-native backend systems with Java, Spring Boot, Python, FastAPI, Kafka, AWS, and modern GenAI technologies such as <span class="text-gold font-medium"> RAG, LLMs, and MCP </span> —designed for scalability, reliability, and continuous evolution.
+                    Architecting resilient systems, scalable platforms and AI-driven products with <span class="text-gold font-medium"> RAG, LLMs, MCP and Agents. </span>
                     
                 </p>
                 <div class="flex flex-wrap gap-3 pt-1">
@@ -874,102 +860,115 @@
     </section>
 
     <!-- ===== EXPERIENCE ===== -->
-    <section id="experience" class="px-6 md:px-16 lg:px-24 py-16 max-w-5xl mx-auto reveal-section">
-        <div class="section-label mb-8">Experience</div>
-        <div class="space-y-6 relative before:absolute before:left-[15px] before:top-4 before:h-[calc(100%-2rem)] before:w-[2px] before:bg-gradient-to-b before:from-[#C9A84C]/30 before:to-[#1A3A5C]/10 before:rounded-full">
+    <section id="experience" class="px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 max-w-6xl mx-auto reveal-section">
+        <div class="flex flex-wrap items-end justify-between gap-3 mb-8 md:mb-10">
+            <div>
+                <div class="section-label mb-3">Professional Experience</div>
+                <h3 class="text-2xl md:text-3xl font-semibold text-white tracking-tight">What I’ve Built</h3>
+            </div>
+            <p class="text-xs md:text-sm text-slate-400 max-w-sm leading-relaxed">Backend, distributed systems, cloud, and GenAI.</p>
+        </div>
 
+        <div class="experience-list">
             <!-- Experience 1 -->
-            <div class="relative pl-12 md:pl-16">
-                <div class="absolute left-0 top-2 w-8 h-8 rounded-full bg-[#C9A84C]/10 border border-[#C9A84C]/20 flex items-center justify-center text-gold text-xs">◆</div>
-                <div class="exp-card rounded-2xl p-6 md:p-8">
+            <article class="experience-item">
+                <div class="experience-marker" aria-hidden="true">01</div>
+                <div class="exp-card">
                     <div class="exp-header">
                         <div>
-                            <h3 class="text-xl font-bold text-white">Lead Backend Engineer</h3>
-                            <p class="exp-company">Ernst & Young (EY) · Bangalore</p>
+                            <h3 class="exp-role">Lead Backend Engineer</h3>
+                            <p class="exp-company">Ernst &amp; Young (EY) <span class="text-slate-600 mx-1">/</span> Bangalore</p>
                         </div>
-                        <span class="exp-tag">2024 – Present</span>
+                        <span class="exp-tag">Mar 2024 – Present</span>
                     </div>
                     <ul class="exp-desc">
-                        <li>Architected and delivered cloud-native backend and GenAI platforms using Java 21, Spring Boot, Kafka, Python, FastAPI, RAG, and vector search.</li>
-                        <li>Built RAG-powered AI solutions with semantic search and vector databases, supporting 70+ requests/min with low-latency responses.</li>
-                        <li>Improved API performance by ~40% through caching, asynchronous processing, JVM tuning, database optimization, and efficient service design.</li>
-                        <li>Implemented secure distributed systems using OAuth2, Keycloak, RBAC, and centralized authentication/authorization.</li>
-                        <li>Designed AI-ready architectures using LLM tool calling, MCP, and agentic workflows for intelligent enterprise automation.</li>
+                        <li>Lead backend and API development for Ask Research, an enterprise GenAI research assistant built with Java 21, Spring Boot, Python/FastAPI services, and Kafka.</li>
+                        <li>Integrate OpenAI models to deliver grounded conversational answers over curated research data, refining prompts and retrieval context for answer quality and latency.</li>
+                        <li>Develop a retrieval-augmented generation (RAG) pipeline using vector embeddings and semantic search, supporting 90+ requests per minute.</li>
+                        <li>Expose backend capabilities to language models through the Model Context Protocol (MCP) and tool calling, enabling discovery and invocation of enterprise services.</li>
+                        <li>Prototype multi-agent workflows in which specialised agents coordinate retrieval, tool calls, and task hand-offs.</li>
+                        <li>Evaluate Amazon Bedrock and Google Vertex AI for model access, guardrails, and deployment trade-offs.</li>
+                        <li>Improve API latency by approximately 40% through caching, asynchronous processing, JVM tuning, and query optimisation.</li>
+                        <li>Apply Hexagonal Architecture to keep core business logic decoupled from model providers, vector stores, and data sources.</li>
                     </ul>
-                    <div class="tech-stack">
-                        <span>Java 21</span><span>Spring Boot</span><span>Kafka</span><span>Python</span><span>FastAPI</span><span>RAG</span><span>Vector DB</span><span>AWS</span>
+                    <div class="tech-stack" aria-label="Technologies used">
+                        <span>Java 21</span><span>Spring Boot</span><span>Python</span><span>FastAPI</span><span>Kafka</span><span>MongoDB</span><span>AWS</span><span>RAG</span><span>Vector Search</span><span>MCP</span><span>LLMs</span>
                     </div>
                 </div>
-            </div>
+            </article>
 
             <!-- Experience 2 -->
-            <div class="relative pl-12 md:pl-16">
-                <div class="absolute left-0 top-2 w-8 h-8 rounded-full bg-[#C9A84C]/10 border border-[#C9A84C]/20 flex items-center justify-center text-gold text-xs">◆</div>
-                <div class="exp-card rounded-2xl p-6 md:p-8">
+            <article class="experience-item">
+                <div class="experience-marker" aria-hidden="true">02</div>
+                <div class="exp-card">
                     <div class="exp-header">
                         <div>
-                            <h3 class="text-xl font-bold text-white">Senior Backend Engineer</h3>
-                            <p class="exp-company">Wipro Limited · Bangalore</p>
+                            <h3 class="exp-role">Senior Backend Engineer</h3>
+                            <p class="exp-company">Wipro Limited <span class="text-slate-600 mx-1">/</span> Bangalore</p>
                         </div>
-                        <span class="exp-tag">2021 – 2024</span>
+                        <span class="exp-tag">Jul 2021 – Feb 2024</span>
                     </div>
                     <ul class="exp-desc">
-                        <li>Designed and developed event-driven microservices using Java, Spring Boot, and Kafka for a large-scale enterprise platform.</li>
-                        <li>Built Python-based data processing pipelines and analytics APIs using FastAPI, serving real-time insights to stakeholders.</li>
-                        <li>Improved API response time by 30% via query optimization, caching strategies, and database indexing.</li>
-                        <li>Led the migration of legacy monolithic services to cloud-native microservices on AWS ECS and Kubernetes.</li>
-                        <li>Established robust test automation with JUnit 5, Mockito, and Pytest, reducing production defects by 25%.</li>
+                        <li>Designed and developed high-throughput, fault-tolerant microservices for an enterprise telecom platform using Java, Spring Boot, Kafka, PostgreSQL, and Redis.</li>
+                        <li>Built event-driven services with Kafka for asynchronous processing, inter-service communication, and large-scale data workloads.</li>
+                        <li>Improved API response times by 40%+ through Redis caching, indexing, SQL query tuning, connection-pool optimisation, and JVM tuning, validated with JMeter load tests.</li>
+                        <li>Secured API access with OAuth2-based authentication and authorisation.</li>
+                        <li>Supported production reliability through root-cause analysis and observability with Splunk, Grafana, and AWS CloudWatch; strengthened automated testing with JUnit 5 and Mockito.</li>
                     </ul>
-                    <div class="tech-stack">
-                        <span>Java</span><span>Spring Boot</span><span>Kafka</span><span>Python</span><span>FastAPI</span><span>AWS</span><span>Docker</span><span>Kubernetes</span>
+                    <div class="tech-stack" aria-label="Technologies used">
+                        <span>Java</span><span>Spring Boot</span><span>Kafka</span><span>PostgreSQL</span><span>Redis</span><span>OAuth2</span><span>JMeter</span><span>Docker</span><span>Kubernetes</span><span>AWS</span>
                     </div>
                 </div>
-            </div>
+            </article>
 
             <!-- Experience 3 -->
-            <div class="relative pl-12 md:pl-16">
-                <div class="absolute left-0 top-2 w-8 h-8 rounded-full bg-[#C9A84C]/10 border border-[#C9A84C]/20 flex items-center justify-center text-gold text-xs">◆</div>
-                <div class="exp-card rounded-2xl p-6 md:p-8">
+            <article class="experience-item">
+                <div class="experience-marker" aria-hidden="true">03</div>
+                <div class="exp-card">
                     <div class="exp-header">
                         <div>
-                            <h3 class="text-xl font-bold text-white">Backend Engineer</h3>
-                            <p class="exp-company">ITC InfoTech · Bangalore</p>
+                            <h3 class="exp-role">Backend Engineer</h3>
+                            <p class="exp-company">ITC Infotech <span class="text-slate-600 mx-1">/</span> Bangalore</p>
                         </div>
-                        <span class="exp-tag">2020 – 2021</span>
+                        <span class="exp-tag">Sep 2020 – Jul 2021</span>
                     </div>
                     <ul class="exp-desc">
-                        <li>Built cloud-native services for e-commerce (order management, payment processing, inventory tracking) using Spring Boot and AWS.</li>
-                        <li>Architected event-driven workflows with Kafka for asynchronous processing and decoupled service communication.</li>
-                        <li>Designed idempotent APIs and resilient payment workflows ensuring transactional integrity and fault tolerance.</li>
-                        <li>Improved code maintainability with SOLID principles, clean architecture, and design patterns.</li>
+                        <li>Built backend integration microservices for Holland &amp; Barrett's e-commerce platform, connecting internal systems with external services across order, channel, and payment flows using Java 8/11 and Spring Boot.</li>
+                        <li>Implemented Kafka-based messaging for asynchronous order processing, payment notifications, and inventory synchronisation across distributed services.</li>
+                        <li>Designed idempotent APIs and resilient payment workflows with retry and failure-recovery mechanisms for reliable transaction processing.</li>
+                        <li>Reduced service latency by approximately 25% through optimised API design.</li>
+                        <li>Containerised services with Docker and improved reliability with JUnit 5 and Mockito unit and integration tests.</li>
+                        <li>Applied SOLID principles and clean architecture to create reusable, maintainable business components.</li>
                     </ul>
-                    <div class="tech-stack">
-                        <span>Spring Boot</span><span>Kafka</span><span>AWS</span><span>PostgreSQL</span><span>Redis</span>
+                    <div class="tech-stack" aria-label="Technologies used">
+                        <span>Java 8/11</span><span>Spring Boot</span><span>Kafka</span><span>REST APIs</span><span>Docker</span><span>Kubernetes</span><span>AWS</span>
                     </div>
                 </div>
-            </div>
+            </article>
 
             <!-- Experience 4 -->
-            <div class="relative pl-12 md:pl-16">
-                <div class="absolute left-0 top-2 w-8 h-8 rounded-full bg-[#C9A84C]/10 border border-[#C9A84C]/20 flex items-center justify-center text-gold text-xs">◆</div>
-                <div class="exp-card rounded-2xl p-6 md:p-8">
+            <article class="experience-item">
+                <div class="experience-marker" aria-hidden="true">04</div>
+                <div class="exp-card">
                     <div class="exp-header">
                         <div>
-                            <h3 class="text-xl font-bold text-white">Software Engineer</h3>
-                            <p class="exp-company">Silicon Tech Lab · Bhubaneswar</p>
+                            <h3 class="exp-role">Software Engineer</h3>
+                            <p class="exp-company">Silicon Tech Lab <span class="text-slate-600 mx-1">/</span> Bhubaneswar</p>
                         </div>
-                        <span class="exp-tag">2017 – 2020</span>
+                        <span class="exp-tag">Nov 2017 – Sep 2020</span>
                     </div>
                     <ul class="exp-desc">
-                        <li>Developed ERP backend modules with Spring MVC, Hibernate, and PostgreSQL, serving 500+ concurrent users.</li>
-                        <li>Implemented reusable business components and service layers for core ERP functionalities (finance, HR, inventory).</li>
-                        <li>Resolved production issues via root cause analysis, performance tuning, and database query optimization.</li>
+                        <li>Developed backend modules for a government ERP platform covering artisan registrations, approval workflows, and reporting using Spring MVC, Spring Boot, Hibernate/JPA, and PostgreSQL.</li>
+                        <li>Built backend services for an e-commerce application spanning catalogue, order, and customer workflows, with reusable service layers and Hibernate/PostgreSQL persistence.</li>
+                        <li>Contributed to a healthcare platform by implementing backend modules and business logic for patient and operational data, with a focus on data integrity and reliable workflows.</li>
+                        <li>Designed and maintained data-access layers, tuning queries and indexes to improve database performance and preserve data consistency.</li>
+                        <li>Resolved production issues through root-cause analysis, bug fixes, and performance tuning in collaboration with engineering, QA, and business-analysis teams.</li>
                     </ul>
-                    <div class="tech-stack">
-                        <span>Spring MVC</span><span>Hibernate</span><span>PostgreSQL</span><span>Java 8</span>
+                    <div class="tech-stack" aria-label="Technologies used">
+                        <span>Java 7/8</span><span>Spring MVC</span><span>Spring Boot</span><span>Hibernate</span><span>JPA</span><span>PostgreSQL</span><span>JSP</span><span>Tomcat</span>
                     </div>
                 </div>
-            </div>
+            </article>
         </div>
     </section>
 
